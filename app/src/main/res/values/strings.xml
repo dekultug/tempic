@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DevFEAndroid</string>
+    //chung
+    <string name="loading">Đang tải...</string>
+    <string name="hint_query_search">Bạn muốn tìm gì?</string>
+    <string name="un_follow_user">Theo dõi</string>
+    <string name="follow_user">Đang theo dõi</string>
+
+    //home
+    <string name="all">ALL</string>
+    <string name="hot">Hot</string>
+    <string name="now">Now</string>
+    <string name="follow">Follow</string>
+
+</resources>

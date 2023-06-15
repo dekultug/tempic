@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Corner8ImageView">
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="CornerTop8ImageView">
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeTopRight">8dp</item>
+    </style>
+
+    <style name="CornerImageView">
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>

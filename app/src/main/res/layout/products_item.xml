@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clProductsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="6dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="6dp"
+    android:background="@drawable/shape_bg_white_corner_8"
+    tools:background="@color/teal_200"
+    tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/ivProducts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CornerTop8ImageView"
+        tools:src="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/ivProductsPlayVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:src="@drawable/ic_play"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvProductsContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="12dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/notosans_regular"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivProducts"
+        tools:text="Đây là bảng màu yêu thích của tôi! Sáng dậy đi làm mà trang điểm thì đến tối mới không phải tô lại, độ bền thì điên đảo haha." />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivProductsImageUser"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvProductsContent"
+        app:layout_constraintTop_toBottomOf="@id/tvProductsContent"
+        app:shapeAppearanceOverlay="@style/CornerImageView"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvProductsNameUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/notosans_regular"
+        android:maxLines="1"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivProductsImageUser"
+        app:layout_constraintEnd_toStartOf="@+id/ivProductsHeart"
+        app:layout_constraintStart_toEndOf="@id/ivProductsImageUser"
+        app:layout_constraintTop_toTopOf="@id/ivProductsImageUser"
+        tools:text="Vũ Minh Đức" />
+
+    <ImageView
+        android:id="@+id/ivProductsHeart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:src="@drawable/ic_heart_un_select"
+        app:layout_constraintBottom_toBottomOf="@id/tvProductsCountHeart"
+        app:layout_constraintEnd_toStartOf="@id/tvProductsCountHeart"
+        app:layout_constraintTop_toTopOf="@id/tvProductsCountHeart" />
+
+    <TextView
+        android:id="@+id/tvProductsCountHeart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/notosans_regular"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivProductsImageUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivProductsImageUser"
+        tools:text="124" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

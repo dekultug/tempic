@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/layer_list_bg_white_shadow"
+    android:gravity="center">
+
+    <FrameLayout
+        android:id="@+id/flBottomBarNavigationViewHome"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/ivBottomBarNavigationViewHome"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_nav_home_select" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flBottomBarNavigationViewCart"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/ivBottomBarNavigationViewCart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_cart" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flBottomBarNavigationViewPost"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/ivBottomBarNavigationViewPost"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_post" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flBottomBarNavigationViewGift"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/ivBottomBarNavigationViewGift"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_gift" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flBottomBarNavigationViewPersonal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/ivBottomBarNavigationViewPersonal"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_person" />
+
+    </FrameLayout>
+
+</LinearLayout>

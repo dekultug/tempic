@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_bg_gray_stroke_corner_16">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/edtSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@id/ivSearchView"
+            android:background="@null"
+            android:fontFamily="@font/notosans_regular"
+            android:hint="@string/hint_query_search"
+            android:textColorHint="@color/main_color"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/ivSearchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="5dp"
+            android:src="@drawable/ic_search" />
+
+    </RelativeLayout>
+
+</FrameLayout>
