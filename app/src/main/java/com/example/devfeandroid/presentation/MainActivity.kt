@@ -84,7 +84,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun replaceFragment(@IdRes containerID: Int, fragment: Fragment, keepToBackStack: Boolean = true) {
+    fun replaceFragment(
+        @IdRes containerID: Int,
+        fragment: Fragment,
+        keepToBackStack: Boolean = true,
+        bundle: Bundle? = null
+    ) {
         val tag = fragment::class.java.simpleName
         val findFragment = supportFragmentManager.findFragmentByTag(tag)
         if (findFragment != null) {
@@ -96,19 +101,12 @@ class MainActivity : AppCompatActivity() {
                 if (keepToBackStack) {
                     addToBackStack(tag)
                 }
+                if (bundle != null) {
+                    fragment.arguments = bundle
+                }
                 commit()
             }
         }
-    }
-
-    fun closeApp() {
-        val callback: OnBackPressedCallback = object : OnBackPressedCallback(true /* enabled by default */) {
-            override fun handleOnBackPressed() {
-                this@MainActivity.supportFragmentManager.popBackStack(null, POP_BACK_STACK_INCLUSIVE)
-                this@MainActivity.finish()
-            }
-        }
-        this.onBackPressedDispatcher.addCallback(this, callback)
     }
 
     /**
@@ -145,7 +143,7 @@ class MainActivity : AppCompatActivity() {
 
     interface IUIState<Data> {
         fun onLoading() {}
-        fun onError(s: String, exception: Exception) {}
+        fun onError(s: String, exception: Throwable) {}
         fun onSuccess(data: Data)
     }
 }

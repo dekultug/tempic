@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/flReviewRoot"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_dark_background"
+    tools:context=".presentation.home.review.ReviewFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clReviewMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/shape_bg_white_top_corner_8">
+
+        <ImageView
+            android:id="@+id/ivReviewClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/ic_close_cricle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvReviewTitle" />
+
+        <TextView
+            android:id="@+id/tvReviewTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/notosans_semi_bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toBottomOf="@id/ivReviewClose"
+            app:layout_constraintEnd_toStartOf="@id/ivReviewClose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Tôi đã tìm thấy bảng màu cuộc sống của mình!" />
+
+        <TextView
+            android:id="@+id/tvReviewDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/notosans_regular"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewTitle"
+            tools:text="@string/test_text_long" />
+
+        <TextView
+            android:id="@+id/tvReviewTimePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/notosans_regular"
+            android:textColor="@color/gray_light"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@id/tvReviewDescription"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewDescription"
+            tools:text="2022-05-31 13:59" />
+
+        <View
+            android:id="@+id/vReviewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="12dp"
+            android:background="@color/gray_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewTimePost" />
+
+        <TextView
+            android:id="@+id/tvReviewCountComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/notosans_regular"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/vReviewTitle"
+            app:layout_constraintTop_toBottomOf="@id/vReviewTitle"
+            tools:text="345 bình luận" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvReview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@id/vReview"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewCountComment" />
+
+        <View
+            android:id="@+id/vReview"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/gray_light"
+            app:layout_constraintBottom_toTopOf="@id/clReviewCreate" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clReviewCreate"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/shape_bg_gray_corner_8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/edtReview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="27dp"
+                android:background="@null"
+                android:fontFamily="@font/notosans_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_review"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_light"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivReviewIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivReviewIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:src="@drawable/ic_icon"
+                app:layout_constraintBottom_toBottomOf="@id/ivReviewSend"
+                app:layout_constraintEnd_toStartOf="@id/ivReviewSend"
+                app:layout_constraintTop_toTopOf="@id/ivReviewSend" />
+
+            <ImageView
+                android:id="@+id/ivReviewSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="7dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_send_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

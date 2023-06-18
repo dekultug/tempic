@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/clCommentReviewRoot"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivCommentReviewAvatarUser"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/CornerImageView"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvCommentReviewNameUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosans_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivCommentReviewAvatarUser"
+        app:layout_constraintStart_toEndOf="@id/ivCommentReviewAvatarUser"
+        app:layout_constraintTop_toTopOf="@id/ivCommentReviewAvatarUser"
+        tools:text="oko117" />
+
+    <TextView
+        android:id="@+id/tvCommentReviewContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/notosans_regular"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/llCommentReviewLike"
+        app:layout_constraintStart_toStartOf="@id/tvCommentReviewNameUser"
+        app:layout_constraintTop_toBottomOf="@id/tvCommentReviewNameUser"
+        tools:text="@string/test_text_long" />
+
+    <LinearLayout
+        android:id="@+id/llCommentReviewLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCommentReviewNameUser">
+
+        <ImageView
+            android:id="@+id/ivCommentReviewLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_heart_un_select" />
+
+        <TextView
+            android:id="@+id/tvCommentReviewCountLike"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:text="5"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCommentReviewTimePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/notosans_regular"
+        android:textColor="@color/gray_light"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tvCommentReviewContent"
+        app:layout_constraintTop_toBottomOf="@id/tvCommentReviewContent"
+        tools:text="2022-05-31 13:59" />
+
+    <LinearLayout
+        android:id="@+id/llCommentReviewReply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/tvCommentReviewTimePost"
+        app:layout_constraintStart_toEndOf="@id/tvCommentReviewTimePost"
+        app:layout_constraintTop_toTopOf="@id/tvCommentReviewTimePost">
+
+        <TextView
+            android:id="@+id/tvCommentReviewReply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="@string/reply"
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llCommentReviewReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/tvCommentReviewTimePost"
+        app:layout_constraintStart_toEndOf="@id/llCommentReviewReply"
+        app:layout_constraintTop_toTopOf="@id/tvCommentReviewTimePost">
+
+        <TextView
+            android:id="@+id/tvCommentReviewReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="@string/report"
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

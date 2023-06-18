@@ -5,15 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.devfeandroid.AppConfig
+import com.example.devfeandroid.R
 import com.example.devfeandroid.data.model.producthome.HOME_FILTER
 import com.example.devfeandroid.data.model.producthome.Products
 import com.example.devfeandroid.databinding.HomeFragmentBinding
 import com.example.devfeandroid.presentation.BaseFragment
 import com.example.devfeandroid.presentation.MainActivity
+import com.example.devfeandroid.presentation.home.detailvideo.DetailVideoFragment
 import com.example.devfeandroid.widget.bottomnav.TAB_BOTTOM_NAV
 import com.example.devfeandroid.widget.filter.FilterView
 import com.example.devfeandroid.widget.recyclerview.scroll.BaseLoadMoreRecyclerView
@@ -32,6 +35,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = HomeFragmentBinding.inflate(inflater, container, false)
+        mainActivity!!.showBottomNav(true)
         return binding!!.root
     }
 
@@ -45,6 +49,7 @@ class HomeFragment : BaseFragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
+        removeListener()
     }
 
     private fun setEventView() {
@@ -86,6 +91,8 @@ class HomeFragment : BaseFragment() {
         baseLoadMoreRecyclerView?.let {
             binding!!.rvHome.addOnScrollListener(it)
         }
+
+        addListener()
     }
 
     private fun oberserverData() {
@@ -94,7 +101,6 @@ class HomeFragment : BaseFragment() {
                 mainActivity!!.setState(it, object : MainActivity.IUIState<MutableList<Products>> {
                     override fun onSuccess(data: MutableList<Products>) {
                         productsAdapter.submitList(data)
-                        Log.d("tunglvv", "onSuccess: ${data.size}")
                         baseLoadMoreRecyclerView?.isLoading = false
                         if (viewModel.page == 0) {
                             baseLoadMoreRecyclerView?.lastPage = data.size < AppConfig.LIMIT_ITEM
@@ -106,5 +112,25 @@ class HomeFragment : BaseFragment() {
                 })
             }
         }
+    }
+
+    private fun addListener() {
+        productsAdapter.listener = object : IProductsListener {
+            override fun onReviewImage(products: Products) {
+
+            }
+
+            override fun onReviewVideo(products: Products) {
+                mainActivity!!.replaceFragment(
+                    containerID = R.id.flMainContainerFragment,
+                    fragment = DetailVideoFragment(),
+                    bundle = bundleOf(DetailVideoFragment.DETAIL_PRODUCT_ITEM to products)
+                )
+            }
+        }
+    }
+
+    private fun removeListener() {
+        productsAdapter.listener = null
     }
 }

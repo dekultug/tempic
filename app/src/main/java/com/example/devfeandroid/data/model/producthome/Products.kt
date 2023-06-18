@@ -1,9 +1,14 @@
 package com.example.devfeandroid.data.model.producthome
 
+import android.os.Parcelable
+import com.example.devfeandroid.R
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 import com.example.devfeandroid.extensions.INT_DEFAULT
 import com.example.devfeandroid.extensions.STRING_DEFAULT
+import com.example.devfeandroid.extensions.getAppString
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Products(
     var id: String? = null,
 
@@ -17,17 +22,47 @@ data class Products(
 
     var urlVideo: String? = null,
 
-    var homeFilter: HOME_FILTER? = null
-) {
-    fun getImageProductsDisplay() = imageProduct ?: STRING_DEFAULT
+    var homeFilter: HOME_FILTER? = null,
 
-    fun getTitleProductsDisplay() = titleProduct ?: STRING_DEFAULT
+    var timePost: String = "2022-05-31 13:59",
 
-    fun getCountNumberHeart() = numberHeart ?: INT_DEFAULT
+    var description: String = getAppString(R.string.test_text_long)
+) : Parcelable {
 
-    fun isHasVideo() = urlVideo != null
+    @JvmName("getUserInfo1")
+    fun getUserInfo(): UserInfo {
+        return userInfo ?: throw Exception("không tìm thấy userinfo")
+    }
 
-    fun getAvatarUserInfo() = userInfo?.imageUser ?: STRING_DEFAULT
+    fun getImageProductsDisplay(): String {
+        return imageProduct ?: STRING_DEFAULT
+    }
 
-    fun getUserName() = userInfo?.nameUser ?: STRING_DEFAULT
+    fun getTitleProductsDisplay(): String {
+        return titleProduct ?: STRING_DEFAULT
+    }
+
+    fun getCountNumberHeart(): Int {
+        return numberHeart ?: INT_DEFAULT
+    }
+
+    fun isHasVideo(): Boolean {
+        return urlVideo != null
+    }
+
+    fun getAvatarUserInfo(): String {
+        return getUserInfo().imageUser ?: STRING_DEFAULT
+    }
+
+    fun getUserName(): String {
+        return getUserInfo().nameUser ?: STRING_DEFAULT
+    }
+
+    fun getDescriptionProduct(): String {
+        return description
+    }
+
+    fun getTimePostProduct(): String{
+        return timePost
+    }
 }

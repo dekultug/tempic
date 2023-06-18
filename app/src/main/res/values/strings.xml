@@ -5,11 +5,21 @@
     <string name="hint_query_search">Bạn muốn tìm gì?</string>
     <string name="un_follow_user">Theo dõi</string>
     <string name="follow_user">Đang theo dõi</string>
+    <string name="comment_input">Vui lòng nhập bình luận</string>
+    <string name="table_color">Bảng màu Peripera All Take Mood</string>
+    <string name="test_text_long">Tôi nghĩ điều quan trọng nhất kể từ khi đắp mặt nạ là trang điểm mắt. Mỗi sáng tôi đều trang điểm mắt m...
+#peripera #palette</string>
 
     //home
     <string name="all">ALL</string>
     <string name="hot">Hot</string>
     <string name="now">Now</string>
     <string name="follow">Follow</string>
+
+    //review
+    <string name="reply">Trả lời</string>
+    <string name="report">Báo cáo</string>
+    <string name="hint_review">Vui lòng nhập bình luận</string>
+    <string name="count_review">%s bình luận</string>
 
 </resources>

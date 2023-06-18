@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/clDetailVideoRoot"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.home.detailvideo.DetailVideoFragment">
 
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/pvDetailVideo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:use_controller="false"/>
+
     <FrameLayout
-        android:id="@+id/flDetailVideoRoot"
+        android:id="@+id/flDetailVideoSub"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clDetailVideoShowAction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:elevation="10dp">
@@ -22,6 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
                 android:padding="10dp"
                 android:src="@drawable/ic_back_black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,19 +52,175 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivDetailVideoImageUser"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintBottom_toTopOf="@id/ivDetailVideoFull"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:shapeAppearanceOverlay="@style/CornerImageView"
+                    tools:src="@tools:sample/avatars" />
 
+                <TextView
+                    android:id="@+id/tvDetailVideoNameUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/notosans_medium"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/ivDetailVideoImageUser"
+                    app:layout_constraintStart_toEndOf="@id/ivDetailVideoImageUser"
+                    app:layout_constraintTop_toTopOf="@id/ivDetailVideoImageUser"
+                    tools:text="@string/comment_input"
+                    tools:textColor="@color/black" />
+
+                <com.example.devfeandroid.widget.followview.FollowView
+                    android:id="@+id/fvDetailVideo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintBottom_toBottomOf="@id/ivDetailVideoImageUser"
+                    app:layout_constraintStart_toEndOf="@id/tvDetailVideoNameUser"
+                    app:layout_constraintTop_toTopOf="@id/ivDetailVideoImageUser" />
+
+                <ImageView
+                    android:id="@+id/ivDetailVideoFull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_full_screen"
+                    app:layout_constraintBottom_toTopOf="@id/llDetailVideo"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvDetailVideoDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/notosans_regular"
+                    android:maxLines="3"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@id/ivDetailVideoFull"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivDetailVideoFull"
+                    tools:text="@string/test_text_long" />
+
+                <LinearLayout
+                    android:id="@+id/llDetailVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/transparent_dark_background"
+                    app:layout_constraintBottom_toTopOf="@id/clDetailVideoInteractVideo">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/notosans_bold"
+                        android:text="-20%"
+                        android:textColor="@color/red_dark"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="30dp"
+                        android:fontFamily="@font/notosans_regular"
+                        android:text="@string/table_color"
+                        android:textColor="@color/white_light"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clDetailVideoInteractVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvDetailVideoCountComment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/notosans_regular"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="343" />
+
+                    <ImageView
+                        android:id="@+id/ivDetailVideoComment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?selectableItemBackgroundBorderless"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_review"
+                        app:layout_constraintBottom_toBottomOf="@id/tvDetailVideoCountComment"
+                        app:layout_constraintEnd_toStartOf="@id/tvDetailVideoCountComment"
+                        app:layout_constraintTop_toTopOf="@id/tvDetailVideoCountComment" />
+
+                    <TextView
+                        android:id="@+id/tvDetailViewCountLike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/notosans_regular"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivDetailVideoComment"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="243" />
+
+                    <ImageView
+                        android:id="@+id/ivDetailVideoLike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?selectableItemBackgroundBorderless"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_heart_white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tvDetailViewCountLike"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivDetailVideoReplyComment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="48dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?selectableItemBackgroundBorderless"
+                        android:src="@drawable/bg_reply_comment"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivDetailVideoLike"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.exoplayer2.ui.PlayerView
-            android:id="@+id/pvDetailVideo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </FrameLayout>
 
