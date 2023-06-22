@@ -1,12 +1,9 @@
 package com.example.devfeandroid.presentation
 
 import android.os.Bundle
-import android.provider.ContactsContract.RawContacts.Data
-import androidx.activity.OnBackPressedCallback
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.example.devfeandroid.R
 import com.example.devfeandroid.databinding.ActivityMainBinding
 import com.example.devfeandroid.extensions.STRING_DEFAULT
@@ -16,6 +13,7 @@ import com.example.devfeandroid.presentation.home.HomeFragment
 import com.example.devfeandroid.presentation.splash.SplashFragment
 import com.example.devfeandroid.presentation.state.StateData
 import com.example.devfeandroid.presentation.store.StoreFragment
+import com.example.devfeandroid.util.keyboard.KeyboardUtility
 import com.example.devfeandroid.widget.bottomnav.BottomBarNavigationView
 import com.example.devfeandroid.widget.bottomnav.TAB_BOTTOM_NAV
 import java.util.*
@@ -107,6 +105,17 @@ class MainActivity : AppCompatActivity() {
                 commit()
             }
         }
+    }
+
+    /**
+     * keyboard
+     */
+    fun showKeyBoard(){
+        KeyboardUtility.showKeyBoard(this)
+    }
+
+    fun hideKeyBoard(){
+        KeyboardUtility.hideSoftKeyboard(this)
     }
 
     /**

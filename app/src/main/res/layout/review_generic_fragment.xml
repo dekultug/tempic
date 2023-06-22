@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvReviewGenericCountComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/notosans_regular"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="345 bình luận" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReviewGeneric"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/llReviewGenericReplyUser"
+        app:layout_constraintTop_toBottomOf="@id/tvReviewGenericCountComment" />
+
+    <LinearLayout
+        android:id="@+id/llReviewGenericReplyUser"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/gray_light"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/vReview"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/notosans_medium"
+            android:gravity="center"
+            android:paddingVertical="4dp"
+            android:text="@string/reply"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvReviewGenericReplyUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/notosans_semi_bold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            tools:text="@string/reply" />
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/ic_dot"
+            app:backgroundTint="@color/gray" />
+
+        <TextView
+            android:id="@+id/tvReviewGenericCancelReply"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/notosans_medium"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingHorizontal="10dp"
+            android:text="@string/cancel"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vReview"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/gray_light"
+        app:layout_constraintBottom_toTopOf="@id/clReviewGenericCreate" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clReviewGenericCreate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/shape_bg_gray_corner_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtReviewGeneric"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="27dp"
+            android:background="@null"
+            android:fontFamily="@font/notosans_regular"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_review"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_light"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivReviewGenericIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivReviewGenericIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:src="@drawable/ic_icon"
+            app:layout_constraintBottom_toBottomOf="@id/ivReviewGenericSend"
+            app:layout_constraintEnd_toStartOf="@id/ivReviewGenericSend"
+            app:layout_constraintTop_toTopOf="@id/ivReviewGenericSend" />
+
+        <ImageView
+            android:id="@+id/ivReviewGenericSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="7dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/ic_send_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

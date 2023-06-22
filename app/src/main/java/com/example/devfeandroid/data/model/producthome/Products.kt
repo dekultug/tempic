@@ -29,6 +29,10 @@ data class Products(
     var description: String = getAppString(R.string.test_text_long)
 ) : Parcelable {
 
+    fun getProductId(): String {
+        return id ?: STRING_DEFAULT
+    }
+
     @JvmName("getUserInfo1")
     fun getUserInfo(): UserInfo {
         return userInfo ?: throw Exception("không tìm thấy userinfo")
@@ -62,7 +66,7 @@ data class Products(
         return description
     }
 
-    fun getTimePostProduct(): String{
+    fun getTimePostProduct(): String {
         return timePost
     }
 }

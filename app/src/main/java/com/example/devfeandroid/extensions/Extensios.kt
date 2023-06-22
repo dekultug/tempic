@@ -14,10 +14,6 @@ import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.example.devfeandroid.R
 import com.google.android.material.color.MaterialColors
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 
 const val STRING_DEFAULT = ""
 const val INT_DEFAULT = 0
@@ -109,4 +105,18 @@ fun ImageView.loadImageUrl(url: String) {
         .load(url)
         .placeholder(R.drawable.image_default)
         .into(this)
+}
+
+fun View.getCoordinatesX(): Int {
+    val location = IntArray(2)
+    this.getLocationOnScreen(location)
+    return location[0]
+}
+
+fun View.disable(){
+    this.isEnabled = false
+}
+
+fun View.enable(){
+    this.isEnabled = true
 }

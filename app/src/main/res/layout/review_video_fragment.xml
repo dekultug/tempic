@@ -1,118 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:id="@+id/flReviewRoot"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flReviewRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent_dark_background"
-    tools:context=".presentation.home.review.ReviewFragment">
+    tools:context=".presentation.home.review.video.ReviewVideoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clReviewMain"
+        android:id="@+id/clReviewVideoMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
+        android:background="@drawable/shape_bg_white_top_corner_8"
         android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/shape_bg_white_top_corner_8">
+        android:focusable="true">
 
         <ImageView
-            android:id="@+id/ivReviewClose"
+            android:id="@+id/ivReviewVideoClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:src="@drawable/ic_close_cricle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvReviewTitle" />
+            app:layout_constraintTop_toTopOf="@id/tvReviewVideoTitle" />
 
         <TextView
-            android:id="@+id/tvReviewTitle"
+            android:id="@+id/tvReviewVideoTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="21dp"
             android:layout_marginEnd="20dp"
+            android:ellipsize="end"
             android:fontFamily="@font/notosans_semi_bold"
+            android:maxLines="2"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            app:layout_constraintBottom_toBottomOf="@id/ivReviewClose"
-            app:layout_constraintEnd_toStartOf="@id/ivReviewClose"
+            app:layout_constraintBottom_toBottomOf="@id/ivReviewVideoClose"
+            app:layout_constraintEnd_toStartOf="@id/ivReviewVideoClose"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Tôi đã tìm thấy bảng màu cuộc sống của mình!" />
 
         <TextView
-            android:id="@+id/tvReviewDescription"
+            android:id="@+id/tvReviewVideoDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
+            android:ellipsize="end"
             android:fontFamily="@font/notosans_regular"
+            android:maxLines="3"
             android:textColor="@color/black"
             android:textSize="13sp"
-            android:maxLines="3"
-            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvReviewTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewVideoTitle"
             tools:text="@string/test_text_long" />
 
         <TextView
-            android:id="@+id/tvReviewTimePost"
+            android:id="@+id/tvReviewVideoTimePost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/notosans_regular"
             android:textColor="@color/gray_light"
             android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="@id/tvReviewDescription"
-            app:layout_constraintTop_toBottomOf="@id/tvReviewDescription"
+            app:layout_constraintStart_toStartOf="@id/tvReviewVideoDescription"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewVideoDescription"
             tools:text="2022-05-31 13:59" />
 
         <View
-            android:id="@+id/vReviewTitle"
+            android:id="@+id/vReviewVideoTitle"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="12dp"
             android:background="@color/gray_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvReviewTimePost" />
+            app:layout_constraintTop_toBottomOf="@id/tvReviewVideoTimePost" />
 
         <TextView
-            android:id="@+id/tvReviewCountComment"
+            android:id="@+id/tvReviewVideoCountComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/notosans_regular"
             android:textColor="@color/black"
             android:textSize="13sp"
-            app:layout_constraintStart_toStartOf="@id/vReviewTitle"
-            app:layout_constraintTop_toBottomOf="@id/vReviewTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/vReviewVideoTitle"
             tools:text="345 bình luận" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvReview"
+            android:id="@+id/rvReviewVideo"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toTopOf="@id/vReview"
-            app:layout_constraintTop_toBottomOf="@id/tvReviewCountComment" />
+            app:layout_constraintBottom_toTopOf="@id/llReviewVideoReplyUser"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewVideoCountComment" />
+
+        <LinearLayout
+            android:id="@+id/llReviewVideoReplyUser"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/gray_light"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/vReviewVideo"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/notosans_medium"
+                android:gravity="center"
+                android:paddingVertical="4dp"
+                android:text="@string/reply"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvReviewVideoReplyUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/notosans_semi_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                tools:text="@string/reply" />
+
+            <ImageView
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/ic_dot"
+                app:backgroundTint="@color/gray" />
+
+            <TextView
+                android:id="@+id/tvReviewVideoCancelReply"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/notosans_medium"
+                android:foreground="?selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:text="@string/cancel"
+                android:textSize="13sp" />
+
+        </LinearLayout>
 
         <View
-            android:id="@+id/vReview"
+            android:id="@+id/vReviewVideo"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="12dp"
             android:background="@color/gray_light"
-            app:layout_constraintBottom_toTopOf="@id/clReviewCreate" />
+            app:layout_constraintBottom_toTopOf="@id/clReviewVideoCreate" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clReviewCreate"
+            android:id="@+id/clReviewVideoCreate"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="12dp"
@@ -121,8 +177,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <EditText
-                android:id="@+id/edtReview"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtReviewVideo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="27dp"
@@ -134,25 +190,28 @@
                 android:textColorHint="@color/gray_light"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/ivReviewIcon"
+                app:layout_constraintEnd_toStartOf="@id/ivReviewVideoIcon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ivReviewIcon"
+                android:id="@+id/ivReviewVideoIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
                 android:src="@drawable/ic_icon"
-                app:layout_constraintBottom_toBottomOf="@id/ivReviewSend"
-                app:layout_constraintEnd_toStartOf="@id/ivReviewSend"
-                app:layout_constraintTop_toTopOf="@id/ivReviewSend" />
+                app:layout_constraintBottom_toBottomOf="@id/ivReviewVideoSend"
+                app:layout_constraintEnd_toStartOf="@id/ivReviewVideoSend"
+                app:layout_constraintTop_toTopOf="@id/ivReviewVideoSend" />
 
             <ImageView
-                android:id="@+id/ivReviewSend"
+                android:id="@+id/ivReviewVideoSend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="7dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
                 android:padding="4dp"
                 android:src="@drawable/ic_send_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -162,6 +221,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>

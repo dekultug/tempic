@@ -5,8 +5,8 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
+import com.example.devfeandroid.util.keyboard.KeyboardUtility
 
 open class BaseFragment : Fragment() {
     var mainActivity: MainActivity? = null
@@ -92,5 +92,17 @@ open class BaseFragment : Fragment() {
                 commit()
             }
         }
+    }
+
+    fun showKeyBoard(){
+        mainActivity!!.showKeyBoard()
+    }
+
+    fun hideKeyBoard(){
+        mainActivity!!.hideKeyBoard()
+    }
+
+    fun hideKeyBoardByFragment(){
+        KeyboardUtility.hideSoftKeyboard(requireActivity())
     }
 }

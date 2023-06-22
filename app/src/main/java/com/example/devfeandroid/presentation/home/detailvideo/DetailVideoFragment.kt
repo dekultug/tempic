@@ -13,10 +13,9 @@ import com.example.devfeandroid.data.model.producthome.Products
 import com.example.devfeandroid.databinding.DetailVideoFragmentBinding
 import com.example.devfeandroid.extensions.*
 import com.example.devfeandroid.presentation.BaseFragment
-import com.example.devfeandroid.presentation.home.review.ReviewFragment
+import com.example.devfeandroid.presentation.home.review.video.ReviewVideoFragment
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-
 
 class DetailVideoFragment : BaseFragment() {
 
@@ -31,6 +30,8 @@ class DetailVideoFragment : BaseFragment() {
     private var player: ExoPlayer? = null
 
     private var binding: DetailVideoFragmentBinding? = null
+
+    private var isFake = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -90,12 +91,21 @@ class DetailVideoFragment : BaseFragment() {
         binding!!.ivDetailVideoReplyComment.setOnSafeClick {
             replaceFragmentInFragment(
                 containerID = R.id.clDetailVideoRoot,
-                fragment = ReviewFragment(),
+                fragment = ReviewVideoFragment(),
                 keepToBackStack = true,
                 bundle = bundleOf(
-                    ReviewFragment.REVIEW_PRODUCT_KEY to viewModel.product.value
+                    ReviewVideoFragment.REVIEW_PRODUCT_KEY to viewModel.product.value
                 )
             )
+        }
+
+        binding!!.ivDetailVideoLike.setOnSafeClick {
+            isFake = !isFake
+            if (isFake){
+                binding!!.ivDetailVideoLike.setImageResource(R.drawable.ic_heart_select)
+            }else{
+                binding!!.ivDetailVideoLike.setImageResource(R.drawable.ic_heart_white)
+            }
         }
     }
 

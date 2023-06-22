@@ -9,6 +9,7 @@
     <string name="table_color">Bảng màu Peripera All Take Mood</string>
     <string name="test_text_long">Tôi nghĩ điều quan trọng nhất kể từ khi đắp mặt nạ là trang điểm mắt. Mỗi sáng tôi đều trang điểm mắt m...
 #peripera #palette</string>
+    <string name="cancel">Hủy</string>
 
     //home
     <string name="all">ALL</string>
@@ -18,8 +19,10 @@
 
     //review
     <string name="reply">Trả lời</string>
+    <string name="not_reply">Đóng</string>
     <string name="report">Báo cáo</string>
     <string name="hint_review">Vui lòng nhập bình luận</string>
     <string name="count_review">%s bình luận</string>
+    <string name="see_more_review">Xem câu trả lời (%s)</string>
 
 </resources>

@@ -1,9 +1,7 @@
 package com.example.devfeandroid.data.repo
 
-import android.util.Log
 import com.example.devfeandroid.data.model.review.CommentProduct
 import com.example.devfeandroid.data.model.userinfo.UserInfo
-import kotlin.math.log
 
 fun mockImageProduct(): String {
     return arrayOf(
@@ -99,19 +97,17 @@ fun mockUserInfo(): UserInfo {
     )
 }
 
-fun mockCommentReview(id: Int, parent: Boolean = true): CommentProduct {
+fun mockCommentReview(id: Int, parent: Boolean = true, parentId: String? = null): CommentProduct {
 
     var listCommentChild: MutableList<CommentProduct>? = null
-    var parentId: String? = null
-    val commentId = (id * 1..id * 1000000).random().toString()
+    val commentId = (id * 1..id * 1000).random().toString()
+    val isMyLike = ((0..40).random()) > 20
 
     if (parent) {
         listCommentChild = arrayListOf()
-        listCommentChild.addAll(mockListCommentProduct(false))
-        parentId = null
+        listCommentChild.addAll(mockListCommentProduct(false, commentId))
     } else {
         listCommentChild = null
-        parentId = commentId
     }
 
     return CommentProduct(
@@ -121,25 +117,22 @@ fun mockCommentReview(id: Int, parent: Boolean = true): CommentProduct {
         timePost = "2022-05-31 13:59",
         childComment = listCommentChild,
         parentId = parentId,
-        countLike = (1..100).random()
+        countLike = (0..10).random(),
+        isMyLike = isMyLike
     )
 }
 
-fun mockListCommentProduct(parent: Boolean = true): List<CommentProduct> {
+fun mockListCommentProduct(parent: Boolean = true, parentId: String? = null): List<CommentProduct> {
     val list: MutableList<CommentProduct> = arrayListOf()
-    for (i in 0 until 20) {
-        list.add(mockCommentReview(id = i, parent))
+    for (i in 0 until 1000) {
+        list.add(mockCommentReview(id = i, parent, parentId))
     }
     return list
 }
 
 fun main() {
-    /**
-     * test mock
-     */
-    mockListCommentProduct().forEach {
-        println(it)
-    }
+    val x = mockListCommentProduct()
     mockCommentReview(1, false)
+    x
     println(1)
 }

@@ -2,6 +2,7 @@ package com.example.devfeandroid.data.repo.product
 
 import com.example.devfeandroid.data.model.producthome.HOME_FILTER
 import com.example.devfeandroid.data.model.producthome.Products
+import com.example.devfeandroid.data.model.review.CommentProduct
 import com.example.devfeandroid.data.model.review.ReviewProduct
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 import com.example.devfeandroid.data.repo.*
@@ -9,8 +10,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 
 class ProductsImpl : IProductsRepo {
+
+    private val totalReview = 323
+
+    private val reviewProduct = ReviewProduct(
+        totalComment = totalReview,
+        listComment = mockListCommentProduct().subList(0, 20)
+    )
+
     override fun getProductList(type: HOME_FILTER, page: Int): Flow<List<Products>> {
         val list: MutableList<Products> = arrayListOf()
         when (type) {
@@ -166,17 +176,41 @@ class ProductsImpl : IProductsRepo {
         }.flowOn(Dispatchers.IO)
     }
 
-    override fun getListReviewProducts(): Flow<ReviewProduct> {
-
-        val totalReview = 323
-
-        val reviewProduct = ReviewProduct(
-            totalComment = totalReview,
-            listComment = mockListCommentProduct()
-        )
-
+    override fun getListReviewProducts(parent: Boolean): Flow<ReviewProduct> {
         return flow {
-            emit(reviewProduct)
+            val listComment: MutableList<CommentProduct> = arrayListOf()
+
+            /**
+             * add do bị tham chiếu đến các phần tử của list copy
+             */
+            reviewProduct.listComment?.forEach {
+                listComment.add(it.copy())
+            }
+
+            listComment.forEach {
+                if (it.getListReplyComment().isNotEmpty()) {
+                    it.childComment = arrayListOf()
+                }
+            }
+            val data = ReviewProduct(
+                totalComment = this@ProductsImpl.reviewProduct.getTotalReview(),
+                listComment = listComment
+            )
+            emit(data)
+        }.flowOn(Dispatchers.IO)
+    }
+
+    override fun getListChildReview(parentId: String): Flow<List<CommentProduct>> {
+        return flow<List<CommentProduct>> {
+            val index = reviewProduct.listComment?.indexOfFirst {
+                it.commentId == parentId
+            }
+            val list: MutableList<CommentProduct> = arrayListOf()
+            if (index != null && index >= 0) {
+                list.addAll(reviewProduct.listComment?.get(index)?.childComment?.subList(0, 2)
+                    ?: listOf())
+            }
+            emit(list)
         }.flowOn(Dispatchers.IO)
     }
 }
