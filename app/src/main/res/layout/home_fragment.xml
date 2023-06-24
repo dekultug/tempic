@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/clHomeRoot"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clHomeRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -19,59 +19,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivHomeCart"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glHomeV67"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:padding="5dp"
-        android:src="@drawable/ic_cart_top"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <com.example.devfeandroid.presentation.widget.LeftHeaderView
+        android:id="@+id/lhvHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/ivHomeLogo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivHomeLogo" />
-
-    <TextView
-        android:id="@+id/tvHomeCartCount"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/shape_bg_oval_red"
-        android:fontFamily="@font/notosans_regular"
-        android:gravity="center"
-        android:paddingHorizontal="5dp"
-        android:text="0"
-        android:textColor="@color/white"
-        android:textSize="8sp"
-        app:layout_constraintStart_toStartOf="@id/ivHomeCart"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivHomeRing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:src="@drawable/ic_ring"
-        app:layout_constraintBottom_toBottomOf="@id/ivHomeLogo"
-        app:layout_constraintEnd_toStartOf="@id/ivHomeCart"
-        app:layout_constraintTop_toTopOf="@id/ivHomeLogo" />
-
-    <ImageView
-        android:id="@+id/ivHomeSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:src="@drawable/ic_search"
-        app:layout_constraintBottom_toBottomOf="@id/ivHomeLogo"
-        app:layout_constraintEnd_toStartOf="@id/ivHomeRing"
-        app:layout_constraintTop_toTopOf="@id/ivHomeLogo" />
+        app:layout_constraintStart_toStartOf="@id/glHomeV67"
+        app:layout_constraintTop_toTopOf="@id/ivHomeLogo"
+        app:lhv_show_action="false" />
 
     <com.example.devfeandroid.presentation.widget.filter.FilterView
         android:id="@+id/fvHomeTop"
         android:layout_width="0dp"
         android:layout_height="50dp"
         app:fv_type="HOME"
-        app:layout_constraintEnd_toStartOf="@id/ivHomeSearch"
+        app:layout_constraintEnd_toEndOf="@id/glHomeV67"
         app:layout_constraintStart_toEndOf="@id/ivHomeLogo"
         app:layout_constraintTop_toTopOf="parent" />
 

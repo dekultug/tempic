@@ -33,4 +33,15 @@
     <string name="name_product_sale">A’Clear Balancing Toner 200ml</string>
     <string name="convert_money">$19,40</string>
 
+    // store
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="review">Review</string>
+    <string name="theme">Theme</string>
+    <string name="brand">Rrand</string>
+    <string name="other1">Other 1</string>
+    <string name="other2">Other 2</string>
+    <string name="other3">Other 3</string>
+    <string name="other4">Other 4</string>
+
 </resources>
