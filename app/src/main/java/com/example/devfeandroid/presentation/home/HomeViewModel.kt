@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.devfeandroid.data.model.producthome.HOME_FILTER
 import com.example.devfeandroid.data.model.producthome.Products
+import com.example.devfeandroid.data.repo.Repository
 import com.example.devfeandroid.data.repo.product.IProductsRepo
 import com.example.devfeandroid.data.repo.product.ProductsImpl
 import com.example.devfeandroid.presentation.state.StateData
@@ -32,29 +33,19 @@ class HomeViewModel : ViewModel() {
 
     fun getListProduct(isReload: Boolean = false) {
         viewModelScope.launch {
-            val productsHome: IProductsRepo = ProductsImpl()
+            val repo = Repository.getProductRepo()
+            if (isReload) {
+                _productListState.value = StateData.Loading()
+                page = 1
+                list.clear()
+            } else {
+                page++
+            }
+            delay(150)
+            list.addAll(repo.getProductList(currentFilter, page))
+            isLoaded = true
+            _productListState.value = StateData.Success(list.toMutableList())
 
-            productsHome.getProductList(currentFilter, page)
-                .onStart {
-                    if (isReload) {
-                        if (!isLoaded) {
-                            _productListState.value = StateData.Loading()
-                        }
-                        page = 1
-                        list.clear()
-                    } else {
-                        page++
-                    }
-                    delay(300)
-                }
-                .catch {
-                    _productListState.value = StateData.Error(throwable = it)
-                }
-                .collect {
-                    list.addAll(it)
-                    isLoaded = true
-                    _productListState.value = StateData.Success(list.toMutableList())
-                }
         }
     }
 }

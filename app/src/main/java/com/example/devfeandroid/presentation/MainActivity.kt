@@ -14,15 +14,12 @@ import com.example.devfeandroid.presentation.splash.SplashFragment
 import com.example.devfeandroid.presentation.state.StateData
 import com.example.devfeandroid.presentation.store.StoreFragment
 import com.example.devfeandroid.util.keyboard.KeyboardUtility
-import com.example.devfeandroid.widget.bottomnav.BottomBarNavigationView
-import com.example.devfeandroid.widget.bottomnav.TAB_BOTTOM_NAV
+import com.example.devfeandroid.presentation.widget.bottomnav.BottomBarNavigationView
+import com.example.devfeandroid.presentation.widget.bottomnav.TAB_BOTTOM_NAV
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
-
-    var saveFilterSelect: MutableMap<TAB_BOTTOM_NAV, Int> = EnumMap(TAB_BOTTOM_NAV::class.java)
-
     /**
      * lifecycle
      */

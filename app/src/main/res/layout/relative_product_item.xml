@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:background="@drawable/shape_bg_white_stroke_corner_8">
+
+    <ImageView
+        android:id="@+id/ivRelativeProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/img_product_relative"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvRelativeProductSale" />
+
+    <TextView
+        android:id="@+id/tvRelativeProductSale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/notosans_medium"
+        android:text="@string/sales"
+        android:textColor="@color/red_tpA"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/ivRelativeProduct"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRelativeProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_medium"
+        android:text="@string/name_product_sale"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/tvRelativeProductSale"
+        app:layout_constraintTop_toBottomOf="@id/tvRelativeProductSale" />
+
+    <com.example.devfeandroid.presentation.widget.saleview.SaleView
+        android:id="@+id/svRelativeProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvRelativeProductName"
+        app:layout_constraintTop_toBottomOf="@id/tvRelativeProductName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/notosans_regular"
+        android:text="@string/convert_money"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/svRelativeProduct"
+        app:layout_constraintTop_toBottomOf="@id/svRelativeProduct" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

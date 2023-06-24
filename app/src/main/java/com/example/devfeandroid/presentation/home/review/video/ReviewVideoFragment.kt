@@ -26,7 +26,7 @@ import com.example.devfeandroid.presentation.MainActivity
 import com.example.devfeandroid.presentation.home.review.generic.COMMENT_REVIEW_TYPE
 import com.example.devfeandroid.presentation.home.review.generic.CommentReviewDisplay
 import com.example.devfeandroid.presentation.home.review.generic.IReviewAdapterListener
-import com.example.devfeandroid.widget.recyclerview.scroll.BaseLoadMoreRecyclerView
+import com.example.devfeandroid.presentation.widget.recyclerview.scroll.BaseLoadMoreRecyclerView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/main_color" />
 
-    <com.example.devfeandroid.widget.bottomnav.BottomBarNavigationView
+    <com.example.devfeandroid.presentation.widget.bottomnav.BottomBarNavigationView
         android:id="@+id/bnvMainNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

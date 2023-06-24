@@ -17,9 +17,10 @@ import com.example.devfeandroid.databinding.HomeFragmentBinding
 import com.example.devfeandroid.presentation.BaseFragment
 import com.example.devfeandroid.presentation.MainActivity
 import com.example.devfeandroid.presentation.home.detailvideo.DetailVideoFragment
-import com.example.devfeandroid.widget.bottomnav.TAB_BOTTOM_NAV
-import com.example.devfeandroid.widget.filter.FilterView
-import com.example.devfeandroid.widget.recyclerview.scroll.BaseLoadMoreRecyclerView
+import com.example.devfeandroid.presentation.home.review.image.ReviewImageFragment
+import com.example.devfeandroid.presentation.widget.bottomnav.TAB_BOTTOM_NAV
+import com.example.devfeandroid.presentation.widget.filter.FilterView
+import com.example.devfeandroid.presentation.widget.recyclerview.scroll.BaseLoadMoreRecyclerView
 
 class HomeFragment : BaseFragment() {
 
@@ -53,14 +54,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setEventView() {
-
-        if (mainActivity!!.saveFilterSelect.containsKey(TAB_BOTTOM_NAV.HOME)) {
-            binding!!.fvHomeTop.selectItem(mainActivity!!.saveFilterSelect[TAB_BOTTOM_NAV.HOME]!!)
-        }
-
         binding!!.fvHomeTop.listener = object : FilterView.IFilterViewEvent {
             override fun onFilter(title: String, position: Int) {
-                mainActivity!!.saveFilterSelect[TAB_BOTTOM_NAV.HOME] = position
                 HOME_FILTER.valueNameOf(title)?.let {
                     binding!!.rvHome.scrollToPosition(0)
                     viewModel.currentFilter = it
@@ -102,11 +97,8 @@ class HomeFragment : BaseFragment() {
                     override fun onSuccess(data: MutableList<Products>) {
                         productsAdapter.submitList(data)
                         baseLoadMoreRecyclerView?.isLoading = false
-                        if (viewModel.page == 0) {
-                            baseLoadMoreRecyclerView?.lastPage = data.size < AppConfig.LIMIT_ITEM
-                        } else {
-                            baseLoadMoreRecyclerView?.lastPage = (data.size / viewModel.page) < AppConfig.LIMIT_ITEM
-                        }
+                        baseLoadMoreRecyclerView?.lastPage = viewModel.page > 7
+
                         binding!!.srlHomeRefresh.isRefreshing = false
                     }
                 })
@@ -117,7 +109,11 @@ class HomeFragment : BaseFragment() {
     private fun addListener() {
         productsAdapter.listener = object : IProductsListener {
             override fun onReviewImage(products: Products) {
-
+                mainActivity!!.replaceFragment(
+                    containerID = R.id.flMainContainerFragment,
+                    fragment = ReviewImageFragment(),
+                    bundle = bundleOf(ReviewImageFragment.REVIEW_IMAGE_PRODUCT_KEY to products)
+                )
             }
 
             override fun onReviewVideo(products: Products) {

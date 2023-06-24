@@ -79,7 +79,7 @@
                     tools:text="@string/comment_input"
                     tools:textColor="@color/black" />
 
-                <com.example.devfeandroid.widget.followview.FollowView
+                <com.example.devfeandroid.presentation.widget.followview.FollowView
                     android:id="@+id/fvDetailVideo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

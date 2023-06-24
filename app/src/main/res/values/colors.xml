@@ -18,5 +18,6 @@
     <color name="gray_bg_shape">#F8F8F8</color>
     <color name="red_dark">#EC2525</color>
     <color name="white_light">#EBEBEB</color>
+    <color name="red_tpA">#FF2C2C</color>
 
 </resources>

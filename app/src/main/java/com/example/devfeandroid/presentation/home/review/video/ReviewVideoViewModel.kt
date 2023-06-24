@@ -69,7 +69,7 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
         getListReview()
     }
 
-    fun resetData(){
+    fun resetData() {
         actionReviewType = COMMENT_REVIEW_TYPE.COMMENT_REVIEW
         commentProduct = null
     }
@@ -186,9 +186,7 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                 }
                 oldStateSeeReplyCommentReview[commentId] = false
 
-                val removeList: MutableList<CommentProduct> = arrayListOf()
                 val newItem = (list[index] as CommentProduct).copy()
-
 
                 newItem.childComment = arrayListOf()
                 list[index] = newItem.copy()
@@ -244,16 +242,15 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                                 size++
                             }
                         }
-                        if (size == 0) {
+                        indexScroll = if (size == 0) {
                             list.add(indexCommentParent + 1, newComment)
-                            oldStateSeeReplyCommentReview[newComment.getIdComment()] = true
-                            indexScroll = indexCommentParent + 1
+                            indexCommentParent + 1
                         } else {
-                            /*
-                            cộng thêm phần tử của type xem thêm
+                            /**
+                             *cộng thêm phần tử của type xem thêm
                              */
                             list.add(size + indexCommentParent + 2, newComment)
-                            indexScroll = indexCommentParent + size
+                            indexCommentParent + size + 2
                         }
 
                         /**

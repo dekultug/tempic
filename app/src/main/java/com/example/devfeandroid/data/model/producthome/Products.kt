@@ -12,7 +12,7 @@ import kotlinx.parcelize.Parcelize
 data class Products(
     var id: String? = null,
 
-    var imageProduct: String? = null,
+    var imageProduct: List<String>? = null,
 
     var titleProduct: String? = null,
 
@@ -39,7 +39,7 @@ data class Products(
     }
 
     fun getImageProductsDisplay(): String {
-        return imageProduct ?: STRING_DEFAULT
+        return imageProduct?.first() ?: STRING_DEFAULT
     }
 
     fun getTitleProductsDisplay(): String {
@@ -68,5 +68,9 @@ data class Products(
 
     fun getTimePostProduct(): String {
         return timePost
+    }
+
+    fun getAllImage(): List<String> {
+        return imageProduct ?: arrayListOf()
     }
 }
