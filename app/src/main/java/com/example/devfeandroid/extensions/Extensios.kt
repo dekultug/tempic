@@ -71,6 +71,7 @@ fun getAppDrawable(@DrawableRes drawableId: Int, context: Context? = getApplicat
     }
     return ContextCompat.getDrawable(context, drawableId)
 }
+
 fun getAppDimensionPixel(@DimenRes dimenId: Int, context: Context? = getApplication()) =
     context?.resources?.getDimensionPixelSize(dimenId) ?: -1
 
@@ -113,10 +114,15 @@ fun View.getCoordinatesX(): Int {
     return location[0]
 }
 
-fun View.disable(){
+fun View.disable() {
     this.isEnabled = false
 }
 
-fun View.enable(){
+fun View.enable() {
     this.isEnabled = true
+}
+
+fun Float.DpConvertToInt(): Int {
+    val scale: Float = getApplication().resources.displayMetrics.density
+    return (this * scale + 0.5f) as Int
 }

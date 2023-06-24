@@ -40,6 +40,7 @@
         android:id="@+id/fvHomeTop"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        app:fv_min_width="@dimen/dimen_54"
         app:fv_type="HOME"
         app:layout_constraintEnd_toEndOf="@id/glHomeV67"
         app:layout_constraintStart_toEndOf="@id/ivHomeLogo"

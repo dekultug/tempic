@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.devfeandroid.R
+import com.example.devfeandroid.extensions.DpConvertToInt
 import com.example.devfeandroid.extensions.STRING_DEFAULT
 import com.example.devfeandroid.presentation.widget.filter.data.FILTER_TYPE
 import com.example.devfeandroid.presentation.widget.filter.data.FilterData
@@ -75,6 +76,11 @@ class FilterView constructor(
         val filterView = typedArray.getInt(R.styleable.FilterView_fv_type, 0)
         FILTER_TYPE.valueOfName(filterView)?.let {
             filterAdapter.addContentListFilter(filterDisplay.getListFilter(it))
+        }
+
+        if (typedArray.hasValue(R.styleable.FilterView_fv_min_width)) {
+            val value = typedArray.getDimension(R.styleable.FilterView_fv_min_width,0f)
+            filterAdapter.setMinWidth(value.toInt())
         }
     }
 

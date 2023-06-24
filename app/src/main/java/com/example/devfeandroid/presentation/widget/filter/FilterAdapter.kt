@@ -18,6 +18,8 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
 
     private var dataList: MutableList<FilterData> = arrayListOf()
 
+    private var minWidth: Int = 0
+
     var listener: IFilterListener? = null
 
     fun addContentListFilter(list: List<FilterData>) {
@@ -40,6 +42,10 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
             dataList[position].isSelect = true
             notifyItemChanged(position, CHANGE_STATE_PAYLOAD)
         }
+    }
+
+    fun setMinWidth(value: Int) {
+        this.minWidth = value
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
@@ -71,6 +77,7 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
         }
 
         fun onBind(data: FilterData) {
+            binding.flFilterRoot.minimumWidth = this@FilterAdapter.minWidth
             binding.tvFilterTitle.text = data.title
             stateSelect(data)
         }

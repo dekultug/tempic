@@ -8,7 +8,7 @@
     tools:ignore="MissingDefaultResource">
 
     <ImageView
-        android:id="@+id/ivHomeLogo"
+        android:id="@+id/ivStoreLogo"
         android:layout_width="100dp"
         android:layout_height="15dp"
         android:layout_marginStart="11dp"
@@ -19,12 +19,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.example.devfeandroid.presentation.widget.LeftHeaderView
+        android:id="@+id/lhvStore"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/ivHomeLogo"
+        app:layout_constraintBottom_toBottomOf="@id/ivStoreLogo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivHomeLogo"
-        app:layout_constraintTop_toTopOf="@id/ivHomeLogo"
+        app:layout_constraintStart_toEndOf="@id/ivStoreLogo"
+        app:layout_constraintTop_toTopOf="@id/ivStoreLogo"
         app:lhv_show_action="true" />
+
+    <com.example.devfeandroid.presentation.widget.filter.FilterView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        app:fv_type="STORE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivStoreLogo" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
