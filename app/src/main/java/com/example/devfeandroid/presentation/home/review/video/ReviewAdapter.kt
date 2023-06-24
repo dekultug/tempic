@@ -15,7 +15,6 @@ import com.example.devfeandroid.extensions.loadImageUrl
 import com.example.devfeandroid.extensions.setOnSafeClick
 import com.example.devfeandroid.extensions.show
 import com.example.devfeandroid.presentation.home.review.generic.CommentReviewDisplay
-import com.example.devfeandroid.presentation.home.review.generic.IReviewAdapterListener
 import com.example.devfeandroid.presentation.home.review.generic.ITEM_REVIEW_TYPE
 
 class ReviewAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewDiffCallBack()) {
@@ -28,7 +27,7 @@ class ReviewAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewDiffCallBa
         private const val NOT_TYPE = -1
     }
 
-    var listener: IReviewAdapterListener? = null
+    var listener: IReviewVideoListener? = null
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)

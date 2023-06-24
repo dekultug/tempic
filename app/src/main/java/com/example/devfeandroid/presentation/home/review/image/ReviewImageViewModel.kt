@@ -4,8 +4,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.devfeandroid.data.model.producthome.Products
+import com.example.devfeandroid.data.model.review.CommentProduct
 import com.example.devfeandroid.data.repo.Repository
 import com.example.devfeandroid.extensions.INT_DEFAULT
+import com.example.devfeandroid.presentation.home.review.generic.COMMENT_REVIEW_TYPE
 import com.example.devfeandroid.presentation.home.review.generic.ITEM_REVIEW_TYPE
 import com.example.devfeandroid.presentation.state.StateData
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +28,8 @@ class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     val list: MutableList<Any> = arrayListOf()
 
     var page = 0
+
+    var oldStateSeeReplyCommentReview: MutableMap<String, Boolean> = HashMap()
 
     init {
         getInfoReviewProduct(true)
@@ -78,6 +82,112 @@ class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                     list.addAll(it.listComment ?: arrayListOf())
                     _reviewState.value = StateData.Success(list)
                 }
+        }
+    }
+
+    fun getListChildReview(commentId: String, isSeeMore: Boolean = false) {
+        viewModelScope.launch {
+            val repo = Repository.getProductRepo()
+            repo.getListChildReview(commentId).onStart {
+                if (isSeeMore) {
+                    /**
+                     * remove type: xem câu trả lời
+                     */
+                    var index = list.indexOfFirst {
+                        it is Map<*, *> && it.containsKey(commentId)
+                    }
+                    if (index in 0 until list.size) {
+                        list.removeAt(index)
+                        list.add(index, ITEM_REVIEW_TYPE.LOAD_MORE)
+                        _reviewState.value = StateData.Success(list)
+                        delay(500)
+                    }
+                }
+            }.catch {
+                _reviewState.value = StateData.Error(throwable = it)
+            }.collect {
+
+                if (isSeeMore) {
+                    val indexLoadMore = list.indexOfFirst {
+                        it == ITEM_REVIEW_TYPE.LOAD_MORE
+                    }
+                    if (indexLoadMore >= 0) {
+                        list.removeAt(indexLoadMore)
+                    }
+                }
+
+                val index = list.indexOfFirst {
+                    (it as? CommentProduct)?.commentId == commentId
+                }
+
+                if (index in 0 until list.size) {
+                    oldStateSeeReplyCommentReview[commentId] = true
+
+                    /**
+                     * update list child
+                     */
+                    val newItem = (list[index] as? CommentProduct)?.copy()
+                    val newListChild = newItem?.childComment?.toMutableList()
+                    newListChild?.addAll(it)
+                    newItem?.childComment = newListChild
+                    if (newItem != null) {
+                        list[index] = newItem
+                    }
+
+                    val map: MutableMap<String, Int> = HashMap()
+                    map[commentId] = it.size
+                    list.add(index + 1, map)
+                    if (index in 0 until list.size) {
+                        list.addAll(index + 2, it)
+                    }
+
+                    _reviewState.value = StateData.Success(data = list)
+                }
+            }
+        }
+    }
+
+    fun removeListChildReview(commentId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val index = list.indexOfFirst {
+                (it as? CommentProduct)?.commentId == commentId
+            }
+
+            if (index in 0 until list.size) {
+
+                list.removeIf {
+                    (it as? CommentProduct)?.parentId == commentId || (it as? Map<*, *>)?.containsKey(commentId) == true
+                }
+                oldStateSeeReplyCommentReview[commentId] = false
+
+                val newItem = (list[index] as CommentProduct).copy()
+
+                newItem.childComment = arrayListOf()
+                list[index] = newItem.copy()
+
+                _reviewState.value = StateData.Success(data = list.toMutableList())
+            }
+        }
+    }
+
+    fun interactReview(commentId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val index = list.indexOfFirst {
+                (it as? CommentProduct)?.commentId == commentId
+            }
+            if (index in 0 until list.size) {
+                val newItem = (list[index] as CommentProduct).copy()
+                newItem.isMyLike = !newItem.isMyLike!!
+                if (newItem.isMyLike == true) {
+                    newItem.countLike = newItem.countLike ?: (INT_DEFAULT + 1)
+                } else {
+                    if (newItem.countLike != null && newItem.countLike!! > 0) {
+                        newItem.countLike = newItem.countLike!! - 1
+                    }
+                }
+                list[index] = newItem
+                _reviewState.value = StateData.Success(data = list.toMutableList())
+            }
         }
     }
 }

@@ -58,6 +58,12 @@ class ReviewImageFragment : BaseFragment() {
         observable()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+        removeListener()
+    }
+
     private fun setEventView() {
 
         mainViewModel.getStatusFollow(viewModel.product?.getUserInfo()?.getUserId()
@@ -97,6 +103,35 @@ class ReviewImageFragment : BaseFragment() {
         baseLoadMoreRecyclerView?.let {
             binding!!.rvReviewImage.addOnScrollListener(it)
         }
+
+        addListener()
+    }
+
+    private fun addListener() {
+        adapter.listener = object : IReviewImageListener {
+            override fun onSeeReplyComment(commentID: String) {
+                viewModel.getListChildReview(commentID)
+            }
+
+            override fun onRemoveReplyComment(commentID: String) {
+                viewModel.removeListChildReview(commentID)
+            }
+
+            override fun onSeeMoreReplyComment(commentID: String, position: Int) {
+                viewModel.getListChildReview(commentID,true)
+            }
+
+            override fun onLikeHeart(commentID: String) {
+                viewModel.interactReview(commentID)
+            }
+
+            override fun onReplyComment(commentProduct: CommentProduct) {
+            }
+        }
+    }
+
+    private fun removeListener() {
+        adapter.listener = null
     }
 
     private fun observable() {
@@ -121,7 +156,12 @@ class ReviewImageFragment : BaseFragment() {
                             if (src is CommentProduct) {
                                 val commentReviewDisplay = CommentReviewDisplay(src, true)
 
-                                commentReviewDisplay
+                                if (viewModel.oldStateSeeReplyCommentReview.containsKey(src.getIdComment())) {
+                                    commentReviewDisplay.isSeeReplyComment = !viewModel.oldStateSeeReplyCommentReview[src.getIdComment()]!!
+                                    commentReviewDisplay
+                                } else {
+                                    commentReviewDisplay
+                                }
 
                             } else {
                                 src

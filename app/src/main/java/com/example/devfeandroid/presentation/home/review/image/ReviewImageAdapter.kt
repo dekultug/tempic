@@ -22,6 +22,8 @@ import com.example.devfeandroid.extensions.loadImageUrl
 import com.example.devfeandroid.extensions.setOnSafeClick
 import com.example.devfeandroid.extensions.show
 import com.example.devfeandroid.presentation.home.review.generic.CommentReviewDisplay
+import com.example.devfeandroid.presentation.home.review.video.IReviewVideoListener
+import com.example.devfeandroid.presentation.home.review.video.ReviewAdapter
 import com.example.devfeandroid.presentation.home.review.video.UPDATE_STATE_LIKE_REVIEW_COMMENT_PAYLOAD
 import com.example.devfeandroid.presentation.home.review.video.UPDATE_STATE_SEE_COMMENT_PAYLOAD
 
@@ -29,15 +31,25 @@ import com.example.devfeandroid.presentation.home.review.video.UPDATE_STATE_SEE_
 class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImageDiffCallBack()) {
 
     companion object {
+
         private const val SLIDER_TYPE = 0
+
         private const val INFO_TYPE = 1
+
         private const val RELATIVE_TYPE = 2
+
         private const val TOTAL_REVIEW_TYPE = 3
+
         private const val PARENT_REVIEW_TYPE = 4
+
         private const val CHILD_REVIEW_TYPE = 5
+
         private const val SEE_MORE_REVIEW = 6
+
         private const val LOAD_MORE_TYPE = 7
     }
+
+    var listener: IReviewImageListener? = null
 
     var isDisableScroll = true
 
@@ -110,6 +122,17 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         }
     }
 
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: MutableList<Any>) {
+        if (payloads.isEmpty()) {
+            onBindViewHolder(holder, position)
+        } else {
+            when (holder) {
+                is ParentReviewVH -> {
+                    holder.onBind(getItem(position) as CommentReviewDisplay, payloads)
+                }
+            }
+        }
+    }
 
     inner class SliderProductVH(private val binding: SliderReviewImageItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -154,9 +177,9 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
                 val item = getItem(absoluteAdapterPosition) as? CommentReviewDisplay
                 if (item != null) {
                     if (item.isSeeReplyComment == true) {
-                        //listener?.onSeeReplyComment(item.getCommentProduct().getIdComment())
+                        listener?.onSeeReplyComment(item.getCommentProduct().getIdComment())
                     } else {
-                        // listener?.onRemoveReplyComment(item.getCommentProduct().getIdComment())
+                        listener?.onRemoveReplyComment(item.getCommentProduct().getIdComment())
                     }
                 }
             }
@@ -164,7 +187,7 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
             binding.llCommentReviewLike.setOnSafeClick {
                 val item = getItem(absoluteAdapterPosition) as? CommentReviewDisplay
                 if (item != null) {
-                    // listener?.onLikeHeart(item.getCommentProduct().getIdComment())
+                    listener?.onLikeHeart(item.getCommentProduct().getIdComment())
                 }
             }
 
@@ -183,7 +206,7 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         fun onBind(data: CommentReviewDisplay, payloads: MutableList<Any>) {
             (payloads.firstOrNull() as? List<*>)?.forEach {
                 when (it) {
-                    UPDATE_STATE_LIKE_REVIEW_COMMENT_PAYLOAD -> {
+                    UPDATE_STATE_LIKE_REVIEW_PAYLOAD -> {
                         checkMyLike(data.getCommentProduct().checkMyLike())
                     }
 
@@ -273,7 +296,7 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
                         key = k
                     }
                     key?.let { commentID ->
-                        //listener?.onSeeMoreReplyComment(commentID, absoluteAdapterPosition)
+                        listener?.onSeeMoreReplyComment(commentID, absoluteAdapterPosition)
                     }
                 }
             }

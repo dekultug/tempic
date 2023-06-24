@@ -25,7 +25,6 @@ import com.example.devfeandroid.presentation.BaseFragment
 import com.example.devfeandroid.presentation.MainActivity
 import com.example.devfeandroid.presentation.home.review.generic.COMMENT_REVIEW_TYPE
 import com.example.devfeandroid.presentation.home.review.generic.CommentReviewDisplay
-import com.example.devfeandroid.presentation.home.review.generic.IReviewAdapterListener
 import com.example.devfeandroid.presentation.widget.recyclerview.scroll.BaseLoadMoreRecyclerView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -125,7 +124,7 @@ class ReviewVideoFragment : BaseFragment() {
     }
 
     private fun addListener() {
-        adapter.listener = object : IReviewAdapterListener {
+        adapter.listener = object : IReviewVideoListener {
             override fun onSeeReplyComment(commentID: String) {
                 viewModel.getListChildReview(commentID)
             }

@@ -1,14 +1,14 @@
-package com.example.devfeandroid.presentation.home.review.generic
+package com.example.devfeandroid.presentation.home.review.image
 
 import com.example.devfeandroid.data.model.review.CommentProduct
 
-interface IReviewAdapterListener {
+interface IReviewImageListener {
 
     fun onSeeReplyComment(commentID: String)
 
     fun onRemoveReplyComment(commentID: String)
 
-    fun onSeeMoreReplyComment(commentID: String,position: Int)
+    fun onSeeMoreReplyComment(commentID: String, position: Int)
 
     fun onLikeHeart(commentID: String)
 
