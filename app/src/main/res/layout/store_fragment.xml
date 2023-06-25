@@ -33,6 +33,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
         app:fv_type="STORE"
+        app:fv_font_family_item_select="@font/notosans_semi_bold"
+        app:fv_font_family_item_un_select="@font/notosans_medium"
+        app:fv_min_width="@dimen/dimen_84"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivStoreLogo" />

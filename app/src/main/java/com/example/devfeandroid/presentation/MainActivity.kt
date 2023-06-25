@@ -87,10 +87,16 @@ class MainActivity : AppCompatActivity() {
     ) {
         val tag = fragment::class.java.simpleName
         val findFragment = supportFragmentManager.findFragmentByTag(tag)
+        val fm = supportFragmentManager.beginTransaction()
         if (findFragment != null) {
-            supportFragmentManager.popBackStack(tag, 0)
+            fm.apply {
+                replace(containerID, findFragment, tag)
+                if (bundle != null) {
+                    findFragment.arguments = bundle
+                }
+                commit()
+            }
         } else {
-            val fm = supportFragmentManager.beginTransaction()
             fm.apply {
                 replace(containerID, fragment, tag)
                 if (keepToBackStack) {

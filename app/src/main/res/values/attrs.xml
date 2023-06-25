@@ -4,6 +4,8 @@
     <declare-styleable name="FilterView">
 
         <attr name="fv_min_width" format="dimension" />
+        <attr name="fv_font_family_item_select" format="reference"/>
+        <attr name="fv_font_family_item_un_select" format="reference"/>
 
         <attr name="fv_type" format="enum">
             <enum name="HOME" value="0" />

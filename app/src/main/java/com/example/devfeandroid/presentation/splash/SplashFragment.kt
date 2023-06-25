@@ -4,14 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
 import com.example.devfeandroid.R
 import com.example.devfeandroid.databinding.SplashFragmentBinding
-import com.example.devfeandroid.extensions.gone
 import com.example.devfeandroid.presentation.BaseFragment
-import com.example.devfeandroid.presentation.MainActivity
 import com.example.devfeandroid.presentation.home.HomeFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -32,7 +28,7 @@ class SplashFragment : BaseFragment() {
         mainActivity!!.showBottomNav(false)
         lifecycleScope.launch {
             delay(1000)
-            mainActivity!!.replaceFragment(R.id.flMainContainerFragment,HomeFragment())
+            mainActivity!!.replaceFragment(R.id.flMainContainerFragment, HomeFragment())
         }
     }
 }

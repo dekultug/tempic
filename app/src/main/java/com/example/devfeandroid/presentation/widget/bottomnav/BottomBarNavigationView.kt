@@ -99,6 +99,8 @@ class BottomBarNavigationView constructor(
             setItemSelected(currentTab)
             listener?.onTabPersonal()
         }
+
+        setItemSelected(currentTab)
     }
 
     private fun setItemSelected(tab: TAB_BOTTOM_NAV) {
@@ -132,6 +134,7 @@ class BottomBarNavigationView constructor(
     }
 
     private fun initView(attrs: AttributeSet?) {
+
     }
 
     interface IBottomBarListener {

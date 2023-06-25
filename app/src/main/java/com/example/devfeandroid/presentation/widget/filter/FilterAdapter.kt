@@ -1,5 +1,6 @@
 package com.example.devfeandroid.presentation.widget.filter
 
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,10 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
     private var dataList: MutableList<FilterData> = arrayListOf()
 
     private var minWidth: Int = 0
+
+    private var fontTextItemSelect: Typeface? = null
+
+    private var fontTextItemUnSelect: Typeface? = null
 
     var listener: IFilterListener? = null
 
@@ -46,6 +51,14 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
 
     fun setMinWidth(value: Int) {
         this.minWidth = value
+    }
+
+    fun setFontFamilySelectItem(typeface: Typeface?) {
+        fontTextItemSelect = typeface
+    }
+
+    fun setFontFamilyUnSelectItem(typeface: Typeface?) {
+        fontTextItemUnSelect = typeface
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
@@ -94,10 +107,10 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
             if (data.isSelect == true) {
                 binding.vFilterSelect.show()
                 binding.tvFilterTitle.textColorMain()
-                binding.tvFilterTitle.typeface = getAppFont(R.font.notosans_medium)
+                binding.tvFilterTitle.typeface = fontTextItemSelect?: getAppFont(R.font.notosans_medium)
             } else {
                 binding.vFilterSelect.gone()
-                binding.tvFilterTitle.typeface = getAppFont(R.font.notosans_regular)
+                binding.tvFilterTitle.typeface = fontTextItemUnSelect?: getAppFont(R.font.notosans_regular)
                 binding.tvFilterTitle.textColor(R.color.gray_light)
             }
         }

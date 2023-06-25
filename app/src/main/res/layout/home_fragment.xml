@@ -42,6 +42,8 @@
         android:layout_height="50dp"
         app:fv_min_width="@dimen/dimen_54"
         app:fv_type="HOME"
+        app:fv_font_family_item_select="@font/notosans_medium"
+        app:fv_font_family_item_un_select="@font/notosans_regular"
         app:layout_constraintEnd_toEndOf="@id/glHomeV67"
         app:layout_constraintStart_toEndOf="@id/ivHomeLogo"
         app:layout_constraintTop_toTopOf="parent" />
