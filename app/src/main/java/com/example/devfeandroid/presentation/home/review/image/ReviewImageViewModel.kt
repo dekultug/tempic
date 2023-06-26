@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.devfeandroid.data.model.postreview.PostReview
-import com.example.devfeandroid.data.model.postreview.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentPost
 import com.example.devfeandroid.data.repo.Repository
 import com.example.devfeandroid.extensions.INT_DEFAULT
 import com.example.devfeandroid.presentation.home.review.generic.ITEM_REVIEW_TYPE
@@ -116,7 +116,7 @@ class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                 }
 
                 val index = list.indexOfFirst {
-                    (it as? CommentProduct)?.commentId == commentId
+                    (it as? CommentPost)?.commentId == commentId
                 }
 
                 if (index in 0 until list.size) {
@@ -125,7 +125,7 @@ class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                     /**
                      * update list child
                      */
-                    val newItem = (list[index] as? CommentProduct)?.copy()
+                    val newItem = (list[index] as? CommentPost)?.copy()
                     val newListChild = newItem?.childComment?.toMutableList()
                     newListChild?.addAll(it)
                     newItem?.childComment = newListChild
@@ -149,17 +149,17 @@ class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     fun removeListChildReview(commentId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val index = list.indexOfFirst {
-                (it as? CommentProduct)?.commentId == commentId
+                (it as? CommentPost)?.commentId == commentId
             }
 
             if (index in 0 until list.size) {
 
                 list.removeIf {
-                    (it as? CommentProduct)?.parentId == commentId || (it as? Map<*, *>)?.containsKey(commentId) == true
+                    (it as? CommentPost)?.parentId == commentId || (it as? Map<*, *>)?.containsKey(commentId) == true
                 }
                 oldStateSeeReplyCommentReview[commentId] = false
 
-                val newItem = (list[index] as CommentProduct).copy()
+                val newItem = (list[index] as CommentPost).copy()
 
                 newItem.childComment = arrayListOf()
                 list[index] = newItem.copy()
@@ -172,10 +172,10 @@ class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     fun interactReview(commentId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val index = list.indexOfFirst {
-                (it as? CommentProduct)?.commentId == commentId
+                (it as? CommentPost)?.commentId == commentId
             }
             if (index in 0 until list.size) {
-                val newItem = (list[index] as CommentProduct).copy()
+                val newItem = (list[index] as CommentPost).copy()
                 newItem.isMyLike = !newItem.isMyLike!!
                 if (newItem.isMyLike == true) {
                     newItem.countLike = newItem.countLike ?: (INT_DEFAULT + 1)

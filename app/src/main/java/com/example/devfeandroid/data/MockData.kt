@@ -1,6 +1,6 @@
 package com.example.devfeandroid.data
 
-import com.example.devfeandroid.data.model.postreview.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentPost
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 
 fun mockImagePostReview(): List<String> {
@@ -97,9 +97,9 @@ fun mockUserInfo(): UserInfo {
     )
 }
 
-fun mockCommentReview(id: Int, parent: Boolean = true, parentId: String? = null): CommentProduct {
+fun mockCommentReview(id: Int, parent: Boolean = true, parentId: String? = null): CommentPost {
 
-    var listCommentChild: MutableList<CommentProduct>? = null
+    var listCommentChild: MutableList<CommentPost>? = null
     val commentId = (id * 1..id * 1000).random().toString()
     val isMyLike = ((0..40).random()) > 20
 
@@ -110,7 +110,7 @@ fun mockCommentReview(id: Int, parent: Boolean = true, parentId: String? = null)
         listCommentChild = null
     }
 
-    return CommentProduct(
+    return CommentPost(
         commentId = commentId,
         userInfo = mockUserInfo(),
         content = mockListTitle(),
@@ -122,8 +122,8 @@ fun mockCommentReview(id: Int, parent: Boolean = true, parentId: String? = null)
     )
 }
 
-fun mockListCommentProduct(parent: Boolean = true, parentId: String? = null): List<CommentProduct> {
-    val list: MutableList<CommentProduct> = arrayListOf()
+fun mockListCommentProduct(parent: Boolean = true, parentId: String? = null): List<CommentPost> {
+    val list: MutableList<CommentPost> = arrayListOf()
     for (i in 0 until 1000) {
         list.add(mockCommentReview(id = i, parent, parentId))
     }

@@ -8,7 +8,7 @@ import com.example.devfeandroid.extensions.STRING_DEFAULT
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CommentProduct(
+data class CommentPost(
     var commentId: String? = null,
 
     var parentId: String? = null,
@@ -19,7 +19,7 @@ data class CommentProduct(
 
     var timePost: String? = null,
 
-    var childComment: List<CommentProduct>? = null,
+    var childComment: List<CommentPost>? = null,
 
     var countLike: Int? = null,
 
@@ -53,7 +53,7 @@ data class CommentProduct(
         return isMyLike ?: BOOLEAN_DEFAULT
     }
 
-    fun getListReplyComment(): List<CommentProduct> {
+    fun getListReplyComment(): List<CommentPost> {
         return childComment ?: arrayListOf()
     }
 }

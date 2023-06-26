@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.devfeandroid.data.model.postreview.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentPost
 import com.example.devfeandroid.databinding.ReviewImageFragmentBinding
 import com.example.devfeandroid.extensions.STRING_DEFAULT
 import com.example.devfeandroid.extensions.loadImageUrl
@@ -118,7 +118,7 @@ class ReviewImageFragment : BaseFragment() {
                 viewModel.interactReview(commentID)
             }
 
-            override fun onReplyComment(commentProduct: CommentProduct) {
+            override fun onReplyComment(commentPost: CommentPost) {
             }
         }
     }
@@ -146,7 +146,7 @@ class ReviewImageFragment : BaseFragment() {
                 override fun onSuccess(data: List<Any>) {
                     lifecycleScope.launch {
                         val list = data.map { src ->
-                            if (src is CommentProduct) {
+                            if (src is CommentPost) {
                                 val commentReviewDisplay = CommentReviewDisplay(src, true)
 
                                 if (viewModel.oldStateSeeReplyCommentReview.containsKey(src.getIdComment())) {

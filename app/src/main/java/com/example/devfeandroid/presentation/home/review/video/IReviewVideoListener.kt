@@ -1,6 +1,6 @@
 package com.example.devfeandroid.presentation.home.review.video
 
-import com.example.devfeandroid.data.model.postreview.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentPost
 
 interface IReviewVideoListener {
 
@@ -12,6 +12,6 @@ interface IReviewVideoListener {
 
     fun onLikeHeart(commentID: String)
 
-    fun onReplyComment(commentProduct: CommentProduct)
+    fun onReplyComment(commentPost: CommentPost)
 
 }

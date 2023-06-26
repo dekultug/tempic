@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.devfeandroid.R
-import com.example.devfeandroid.data.model.postreview.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentPost
 import com.example.devfeandroid.databinding.ReviewVideoFragmentBinding
 import com.example.devfeandroid.extensions.STRING_DEFAULT
 import com.example.devfeandroid.extensions.disable
@@ -91,13 +91,13 @@ class ReviewVideoFragment : BaseFragment() {
 
         binding!!.ivReviewVideoSend.setOnSafeClick {
             if (viewModel.actionReviewType != COMMENT_REVIEW_TYPE.REPLY_COMMENT) {
-                viewModel.commentProduct = CommentProduct(
+                viewModel.commentPost = CommentPost(
                     commentId = (1000..10000000).random().toString(),
                     userInfo = viewModel.myUserInfo,
                     parentId = null
                 )
             }
-            viewModel.commentProduct?.let {
+            viewModel.commentPost?.let {
                 viewModel.createComment(binding!!.edtReviewVideo.text.toString())
             }
             hideKeyBoardReview()
@@ -141,15 +141,15 @@ class ReviewVideoFragment : BaseFragment() {
                 viewModel.removeListChildReview(commentID)
             }
 
-            override fun onReplyComment(commentProduct: CommentProduct) {
+            override fun onReplyComment(commentPost: CommentPost) {
 
                 showKeyBoardReview()
 
                 binding!!.llReviewVideoReplyUser.show()
-                binding!!.tvReviewVideoReplyUserName.text = commentProduct.getInfoUser().getUserName()
-                viewModel.commentProduct = CommentProduct(
+                binding!!.tvReviewVideoReplyUserName.text = commentPost.getInfoUser().getUserName()
+                viewModel.commentPost = CommentPost(
                     commentId = (1000..1000000).random().toString(),
-                    parentId = commentProduct.commentId,
+                    parentId = commentPost.commentId,
                     userInfo = viewModel.myUserInfo
                 )
                 viewModel.actionReviewType = COMMENT_REVIEW_TYPE.REPLY_COMMENT
@@ -185,7 +185,7 @@ class ReviewVideoFragment : BaseFragment() {
                     override fun onSuccess(data: List<Any>) {
                         lifecycleScope.launch {
                             val list = data.map { src ->
-                                if (src is CommentProduct) {
+                                if (src is CommentPost) {
                                     val commentReviewDisplay = CommentReviewDisplay(src, true)
 
                                     if (viewModel.oldStateSeeReplyCommentReview.containsKey(src.getIdComment())) {

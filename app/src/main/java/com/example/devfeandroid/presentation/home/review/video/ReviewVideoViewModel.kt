@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.devfeandroid.data.model.postreview.PostReview
-import com.example.devfeandroid.data.model.postreview.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentPost
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 import com.example.devfeandroid.data.repo.Repository
 import com.example.devfeandroid.extensions.INT_DEFAULT
@@ -52,7 +52,7 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     /**
      * tạo 1 comment mới
      */
-    var commentProduct: CommentProduct? = null
+    var commentPost: CommentPost? = null
 
     var myUserInfo = UserInfo(
         id = "tunglv2002",
@@ -71,7 +71,7 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
     fun resetData() {
         actionReviewType = COMMENT_REVIEW_TYPE.COMMENT_REVIEW
-        commentProduct = null
+        commentPost = null
     }
 
     fun getListReview(isLoadMore: Boolean = false) {
@@ -143,7 +143,7 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                 }
 
                 val index = list.indexOfFirst {
-                    (it as? CommentProduct)?.commentId == commentId
+                    (it as? CommentPost)?.commentId == commentId
                 }
 
                 if (index in 0 until list.size) {
@@ -152,7 +152,7 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                     /**
                      * update list child
                      */
-                    val newItem = (list[index] as? CommentProduct)?.copy()
+                    val newItem = (list[index] as? CommentPost)?.copy()
                     val newListChild = newItem?.childComment?.toMutableList()
                     newListChild?.addAll(it)
                     newItem?.childComment = newListChild
@@ -176,17 +176,17 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     fun removeListChildReview(commentId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val index = list.indexOfFirst {
-                (it as? CommentProduct)?.commentId == commentId
+                (it as? CommentPost)?.commentId == commentId
             }
 
             if (index in 0 until list.size) {
 
                 list.removeIf {
-                    (it as? CommentProduct)?.parentId == commentId || (it as? Map<*, *>)?.containsKey(commentId) == true
+                    (it as? CommentPost)?.parentId == commentId || (it as? Map<*, *>)?.containsKey(commentId) == true
                 }
                 oldStateSeeReplyCommentReview[commentId] = false
 
-                val newItem = (list[index] as CommentProduct).copy()
+                val newItem = (list[index] as CommentPost).copy()
 
                 newItem.childComment = arrayListOf()
                 list[index] = newItem.copy()
@@ -199,10 +199,10 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     fun interactReview(commentId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val index = list.indexOfFirst {
-                (it as? CommentProduct)?.commentId == commentId
+                (it as? CommentPost)?.commentId == commentId
             }
             if (index in 0 until list.size) {
-                val newItem = (list[index] as CommentProduct).copy()
+                val newItem = (list[index] as CommentPost).copy()
                 newItem.isMyLike = !newItem.isMyLike!!
                 if (newItem.isMyLike == true) {
                     newItem.countLike = newItem.countLike ?: (INT_DEFAULT + 1)
@@ -220,7 +220,7 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     fun createComment(content: String) {
         viewModelScope.launch(Dispatchers.IO) {
 
-            val newComment = commentProduct!!.copy()
+            val newComment = commentPost!!.copy()
             newComment.content = content
 
             when (actionReviewType) {
@@ -232,13 +232,13 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                 COMMENT_REVIEW_TYPE.REPLY_COMMENT -> {
 
                     val indexCommentParent = list.indexOfFirst {
-                        newComment.getIdParent() == (it as? CommentProduct)?.getIdComment()
+                        newComment.getIdParent() == (it as? CommentPost)?.getIdComment()
                     }
 
                     if (indexCommentParent in 0 until list.size) {
                         var size = 0
                         list.forEach {
-                            if ((it as? CommentProduct)?.getIdParent() == newComment.getIdParent()) {
+                            if ((it as? CommentPost)?.getIdParent() == newComment.getIdParent()) {
                                 size++
                             }
                         }
@@ -256,7 +256,7 @@ class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
                         /**
                          * update comment
                          */
-                        val newItem = (list[indexCommentParent] as CommentProduct).copy()
+                        val newItem = (list[indexCommentParent] as CommentPost).copy()
                         newItem.childComment?.toMutableList()?.add(newComment)
                         list[indexCommentParent] = newItem
                     }

@@ -34,10 +34,10 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
     }
 
     fun selectItemOld(position: Int) {
-        selectItem(position)
+        selectItem(position, false)
     }
 
-    private fun selectItem(position: Int) {
+    private fun selectItem(position: Int, isHasCallBack: Boolean = true) {
         val oldPosition = dataList.indexOfFirst {
             it.isSelect == true
         }
@@ -46,6 +46,10 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
             notifyItemChanged(oldPosition, CHANGE_STATE_PAYLOAD)
             dataList[position].isSelect = true
             notifyItemChanged(position, CHANGE_STATE_PAYLOAD)
+
+            if (isHasCallBack) {
+                listener?.onSelect(dataList[position], position)
+            }
         }
     }
 
@@ -85,7 +89,6 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
         init {
             binding.root.setOnSafeClick {
                 selectItem(absoluteAdapterPosition)
-                listener?.onSelect(dataList[absoluteAdapterPosition], absoluteAdapterPosition)
             }
         }
 
@@ -107,10 +110,12 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
             if (data.isSelect == true) {
                 binding.vFilterSelect.show()
                 binding.tvFilterTitle.textColorMain()
-                binding.tvFilterTitle.typeface = fontTextItemSelect?: getAppFont(R.font.notosans_medium)
+                binding.tvFilterTitle.typeface = fontTextItemSelect
+                    ?: getAppFont(R.font.notosans_medium)
             } else {
                 binding.vFilterSelect.gone()
-                binding.tvFilterTitle.typeface = fontTextItemUnSelect?: getAppFont(R.font.notosans_regular)
+                binding.tvFilterTitle.typeface = fontTextItemUnSelect
+                    ?: getAppFont(R.font.notosans_regular)
                 binding.tvFilterTitle.textColor(R.color.gray_light)
             }
         }

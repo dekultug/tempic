@@ -1,4 +1,4 @@
-package com.example.devfeandroid.data.repo.product
+package com.example.devfeandroid.data.repo.postreview
 
 import com.example.devfeandroid.data.mocKImageUser
 import com.example.devfeandroid.data.mockImagePostReview
@@ -7,19 +7,19 @@ import com.example.devfeandroid.data.mockListTitle
 import com.example.devfeandroid.data.mockNameUser
 import com.example.devfeandroid.data.model.postreview.HOME_FILTER
 import com.example.devfeandroid.data.model.postreview.PostReview
-import com.example.devfeandroid.data.model.postreview.review.CommentProduct
-import com.example.devfeandroid.data.model.postreview.review.ReviewProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentPost
+import com.example.devfeandroid.data.model.postreview.review.ReviewPost
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class ProductsImpl : IProductsRepo {
+class PostReviewImpl : IPostReviewRepo {
 
     private val totalReview = 323
 
-    private val reviewProduct = ReviewProduct(
+    private val reviewPost = ReviewPost(
         totalComment = totalReview,
         listComment = mockListCommentProduct().subList(0, 20)
     )
@@ -178,14 +178,14 @@ class ProductsImpl : IProductsRepo {
          return list
     }
 
-    override fun getListReviewProducts(parent: Boolean): Flow<ReviewProduct> {
+    override fun getListReviewProducts(parent: Boolean): Flow<ReviewPost> {
         return flow {
-            val listComment: MutableList<CommentProduct> = arrayListOf()
+            val listComment: MutableList<CommentPost> = arrayListOf()
 
             /**
              * add do bị tham chiếu đến các phần tử của list copy
              */
-            reviewProduct.listComment?.forEach {
+            reviewPost.listComment?.forEach {
                 listComment.add(it.copy())
             }
 
@@ -194,22 +194,22 @@ class ProductsImpl : IProductsRepo {
                     it.childComment = arrayListOf()
                 }
             }
-            val data = ReviewProduct(
-                totalComment = this@ProductsImpl.reviewProduct.getTotalReview(),
+            val data = ReviewPost(
+                totalComment = this@PostReviewImpl.reviewPost.getTotalReview(),
                 listComment = listComment
             )
             emit(data)
         }.flowOn(Dispatchers.IO)
     }
 
-    override fun getListChildReview(parentId: String): Flow<List<CommentProduct>> {
-        return flow<List<CommentProduct>> {
-            val index = reviewProduct.listComment?.indexOfFirst {
+    override fun getListChildReview(parentId: String): Flow<List<CommentPost>> {
+        return flow<List<CommentPost>> {
+            val index = reviewPost.listComment?.indexOfFirst {
                 it.commentId == parentId
             }
-            val list: MutableList<CommentProduct> = arrayListOf()
+            val list: MutableList<CommentPost> = arrayListOf()
             if (index != null && index >= 0) {
-                list.addAll(reviewProduct.listComment?.get(index)?.childComment?.subList(0, 2)
+                list.addAll(reviewPost.listComment?.get(index)?.childComment?.subList(0, 2)
                     ?: listOf())
             }
             emit(list)

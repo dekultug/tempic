@@ -1,13 +1,13 @@
 package com.example.devfeandroid.data.repo
 
-import com.example.devfeandroid.data.repo.product.IProductsRepo
-import com.example.devfeandroid.data.repo.product.ProductsImpl
+import com.example.devfeandroid.data.repo.postreview.IPostReviewRepo
+import com.example.devfeandroid.data.repo.postreview.PostReviewImpl
 
 object Repository {
 
-    private val productImpl by lazy { ProductsImpl() }
+    private val productImpl by lazy { PostReviewImpl() }
 
-    fun getProductRepo(): IProductsRepo{
+    fun getProductRepo(): IPostReviewRepo{
         return productImpl
     }
 

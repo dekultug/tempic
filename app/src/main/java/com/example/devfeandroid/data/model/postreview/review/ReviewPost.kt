@@ -5,10 +5,10 @@ import com.example.devfeandroid.extensions.INT_DEFAULT
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ReviewProduct(
+data class ReviewPost(
     var totalComment: Int? = null,
 
-    var listComment: List<CommentProduct>? = null
+    var listComment: List<CommentPost>? = null
 ) : Parcelable {
     fun getTotalReview(): Int {
         return totalComment ?: INT_DEFAULT
