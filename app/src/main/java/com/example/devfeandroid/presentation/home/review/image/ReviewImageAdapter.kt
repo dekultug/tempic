@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.devfeandroid.R
-import com.example.devfeandroid.data.model.producthome.Products
+import com.example.devfeandroid.data.model.postreview.PostReview
 import com.example.devfeandroid.databinding.BaseLoadMoreItemBinding
 import com.example.devfeandroid.databinding.CommentReviewItemBinding
 import com.example.devfeandroid.databinding.CountReviewItemBinding
@@ -22,9 +22,6 @@ import com.example.devfeandroid.extensions.loadImageUrl
 import com.example.devfeandroid.extensions.setOnSafeClick
 import com.example.devfeandroid.extensions.show
 import com.example.devfeandroid.presentation.home.review.generic.CommentReviewDisplay
-import com.example.devfeandroid.presentation.home.review.video.IReviewVideoListener
-import com.example.devfeandroid.presentation.home.review.video.ReviewAdapter
-import com.example.devfeandroid.presentation.home.review.video.UPDATE_STATE_LIKE_REVIEW_COMMENT_PAYLOAD
 import com.example.devfeandroid.presentation.home.review.video.UPDATE_STATE_SEE_COMMENT_PAYLOAD
 
 
@@ -59,7 +56,7 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
 
             is List<*> -> SLIDER_TYPE
 
-            is Products -> INFO_TYPE
+            is PostReview -> INFO_TYPE
 
             REVIEW_IMAGE_TYPE.RELATIVE_PRODUCT -> RELATIVE_TYPE
 
@@ -110,7 +107,7 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
 
             is SliderProductVH -> holder.onBind(getItem(position) as List<String>)
 
-            is InfoProductVH -> holder.onBind(getItem(position) as Products)
+            is InfoProductVH -> holder.onBind(getItem(position) as PostReview)
 
             is CountReviewVH -> holder.onBind(getItem(position) as Int)
 
@@ -158,7 +155,7 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
 
     inner class InfoProductVH(private val binding: InfoReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(data: Products) {
+        fun onBind(data: PostReview) {
             binding.tvInfoReviewTitle.text = data.getTitleProductsDisplay()
             binding.tvInfoReviewDescription.text = data.getDescriptionProduct()
         }

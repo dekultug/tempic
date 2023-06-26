@@ -1,4 +1,4 @@
-package com.example.devfeandroid.data.model.producthome
+package com.example.devfeandroid.data.model.postreview
 
 import android.os.Parcelable
 import com.example.devfeandroid.R
@@ -9,7 +9,7 @@ import com.example.devfeandroid.extensions.getAppString
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Products(
+data class PostReview(
     var id: String? = null,
 
     var imageProduct: List<String>? = null,

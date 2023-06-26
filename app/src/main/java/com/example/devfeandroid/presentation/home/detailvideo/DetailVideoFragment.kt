@@ -9,7 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.devfeandroid.R
-import com.example.devfeandroid.data.model.producthome.Products
+import com.example.devfeandroid.data.model.postreview.PostReview
 import com.example.devfeandroid.databinding.DetailVideoFragmentBinding
 import com.example.devfeandroid.extensions.*
 import com.example.devfeandroid.presentation.BaseFragment
@@ -125,7 +125,7 @@ class DetailVideoFragment : BaseFragment() {
         }
     }
 
-    private fun updateUI(data: Products) {
+    private fun updateUI(data: PostReview) {
         binding!!.apply {
             ivDetailVideoImageUser.loadImageUrl(data.getAvatarUserInfo())
             tvDetailVideoNameUser.text = data.getUserName()

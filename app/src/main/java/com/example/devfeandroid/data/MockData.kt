@@ -1,9 +1,9 @@
 package com.example.devfeandroid.data
 
-import com.example.devfeandroid.data.model.producthome.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentProduct
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 
-fun mockImageProduct(): List<String> {
+fun mockImagePostReview(): List<String> {
     return arrayOf(
         "https://studiovietnam.com/wp-content/uploads/2021/07/chup-anh-son-moi-07.png",
         "https://i0.wp.com/thatnhucuocsong.com.vn/wp-content/uploads/2022/01/anh-tui-xach-nu-dep-gia-re.jpg",

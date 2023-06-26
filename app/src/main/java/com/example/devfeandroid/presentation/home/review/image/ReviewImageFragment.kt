@@ -1,23 +1,16 @@
 package com.example.devfeandroid.presentation.home.review.image
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
-import com.example.devfeandroid.R
-import com.example.devfeandroid.data.model.producthome.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentProduct
 import com.example.devfeandroid.databinding.ReviewImageFragmentBinding
 import com.example.devfeandroid.extensions.STRING_DEFAULT
-import com.example.devfeandroid.extensions.disable
-import com.example.devfeandroid.extensions.getAppString
-import com.example.devfeandroid.extensions.gone
 import com.example.devfeandroid.extensions.loadImageUrl
 import com.example.devfeandroid.extensions.setOnSafeClick
 import com.example.devfeandroid.presentation.BaseFragment

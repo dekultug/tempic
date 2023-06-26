@@ -3,8 +3,8 @@ package com.example.devfeandroid.presentation.home.review.video
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.devfeandroid.data.model.producthome.Products
-import com.example.devfeandroid.data.model.producthome.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.PostReview
+import com.example.devfeandroid.data.model.postreview.review.CommentProduct
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 import com.example.devfeandroid.data.repo.Repository
 import com.example.devfeandroid.extensions.INT_DEFAULT
@@ -21,8 +21,8 @@ import kotlinx.coroutines.launch
 
 class ReviewVideoViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
-    private val _product = savedStateHandle.get<Products>(ReviewVideoFragment.REVIEW_PRODUCT_KEY)
-    val product = MutableStateFlow(Products())
+    private val _product = savedStateHandle.get<PostReview>(ReviewVideoFragment.REVIEW_PRODUCT_KEY)
+    val product = MutableStateFlow(PostReview())
 
     private var _commentReviewState = MutableStateFlow<StateData<List<Any>>>(StateData.Init())
     val commentReviewState = _commentReviewState.asStateFlow()

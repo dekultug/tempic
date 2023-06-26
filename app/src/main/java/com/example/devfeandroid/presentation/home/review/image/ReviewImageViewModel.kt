@@ -3,11 +3,10 @@ package com.example.devfeandroid.presentation.home.review.image
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.devfeandroid.data.model.producthome.Products
-import com.example.devfeandroid.data.model.producthome.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.PostReview
+import com.example.devfeandroid.data.model.postreview.review.CommentProduct
 import com.example.devfeandroid.data.repo.Repository
 import com.example.devfeandroid.extensions.INT_DEFAULT
-import com.example.devfeandroid.presentation.home.review.generic.COMMENT_REVIEW_TYPE
 import com.example.devfeandroid.presentation.home.review.generic.ITEM_REVIEW_TYPE
 import com.example.devfeandroid.presentation.state.StateData
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +19,7 @@ import kotlinx.coroutines.launch
 
 class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
-    val product = savedStateHandle.get<Products>(ReviewImageFragment.REVIEW_IMAGE_PRODUCT_KEY)
+    val product = savedStateHandle.get<PostReview>(ReviewImageFragment.REVIEW_IMAGE_PRODUCT_KEY)
 
     private var _reviewState = MutableStateFlow<StateData<List<Any>>>(StateData.Init())
     val reviewState = _reviewState.asStateFlow()

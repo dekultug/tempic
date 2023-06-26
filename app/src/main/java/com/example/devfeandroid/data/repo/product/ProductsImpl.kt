@@ -1,14 +1,14 @@
 package com.example.devfeandroid.data.repo.product
 
 import com.example.devfeandroid.data.mocKImageUser
-import com.example.devfeandroid.data.mockImageProduct
+import com.example.devfeandroid.data.mockImagePostReview
 import com.example.devfeandroid.data.mockListCommentProduct
 import com.example.devfeandroid.data.mockListTitle
 import com.example.devfeandroid.data.mockNameUser
-import com.example.devfeandroid.data.model.producthome.HOME_FILTER
-import com.example.devfeandroid.data.model.producthome.Products
-import com.example.devfeandroid.data.model.producthome.review.CommentProduct
-import com.example.devfeandroid.data.model.producthome.review.ReviewProduct
+import com.example.devfeandroid.data.model.postreview.HOME_FILTER
+import com.example.devfeandroid.data.model.postreview.PostReview
+import com.example.devfeandroid.data.model.postreview.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.ReviewProduct
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -24,18 +24,18 @@ class ProductsImpl : IProductsRepo {
         listComment = mockListCommentProduct().subList(0, 20)
     )
 
-    override fun getProductList(type: HOME_FILTER, page: Int): List<Products> {
+    override fun getProductList(type: HOME_FILTER, page: Int): List<PostReview> {
 
-            val list: MutableList<Products> = arrayListOf()
+            val list: MutableList<PostReview> = arrayListOf()
             when (type) {
                 HOME_FILTER.ALL -> {
                     val start = 20 * page
                     val end = start + 20
                     if (page == 4) {
                         for (i in start..end - 10) {
-                            list.add(Products(
+                            list.add(PostReview(
                                 id = "00${i + 1}",
-                                imageProduct = mockImageProduct(),
+                                imageProduct = mockImagePostReview(),
                                 titleProduct = mockListTitle(),
                                 userInfo = UserInfo(
                                     id = "10000${i}",
@@ -49,9 +49,9 @@ class ProductsImpl : IProductsRepo {
                         }
                     } else {
                         for (i in start until end) {
-                            list.add(Products(
+                            list.add(PostReview(
                                 id = "00${i + 1}",
-                                imageProduct = mockImageProduct(),
+                                imageProduct = mockImagePostReview(),
                                 titleProduct = mockListTitle(),
                                 userInfo = UserInfo(
                                     id = "10000${i}",
@@ -71,9 +71,9 @@ class ProductsImpl : IProductsRepo {
                     val end = start + 20
                     if (page == 7) {
                         for (i in start..end - 10) {
-                            list.add(Products(
+                            list.add(PostReview(
                                 id = "00${i + 1}",
-                                imageProduct = mockImageProduct(),
+                                imageProduct = mockImagePostReview(),
                                 titleProduct = mockListTitle(),
                                 userInfo = UserInfo(
                                     id = "10000${i}",
@@ -86,9 +86,9 @@ class ProductsImpl : IProductsRepo {
                         }
                     } else {
                         for (i in start..end) {
-                            list.add(Products(
+                            list.add(PostReview(
                                 id = "00${i + 1}",
-                                imageProduct = mockImageProduct(),
+                                imageProduct = mockImagePostReview(),
                                 titleProduct = mockListTitle(),
                                 userInfo = UserInfo(
                                     id = "10000${i}",
@@ -107,9 +107,9 @@ class ProductsImpl : IProductsRepo {
                     val end = start + 20
                     if (page == 10) {
                         for (i in start..end - 10) {
-                            list.add(Products(
+                            list.add(PostReview(
                                 id = "00${i + 1}",
-                                imageProduct = mockImageProduct(),
+                                imageProduct = mockImagePostReview(),
                                 titleProduct = mockListTitle(),
                                 userInfo = UserInfo(
                                     id = "10000${i}",
@@ -122,9 +122,9 @@ class ProductsImpl : IProductsRepo {
                         }
                     } else {
                         for (i in start..end) {
-                            list.add(Products(
+                            list.add(PostReview(
                                 id = "00${i + 1}",
-                                imageProduct = mockImageProduct(),
+                                imageProduct = mockImagePostReview(),
                                 titleProduct = mockListTitle(),
                                 userInfo = UserInfo(
                                     id = "10000${i}",
@@ -144,9 +144,9 @@ class ProductsImpl : IProductsRepo {
 
                     if (page == 12) {
                         for (i in start..end - 10) {
-                            list.add(Products(
+                            list.add(PostReview(
                                 id = "00${i + 1}",
-                                imageProduct = mockImageProduct(),
+                                imageProduct = mockImagePostReview(),
                                 titleProduct = mockListTitle(),
                                 userInfo = UserInfo(
                                     id = "10000${i}",
@@ -159,9 +159,9 @@ class ProductsImpl : IProductsRepo {
                         }
                     } else {
                         for (i in start..end) {
-                            list.add(Products(
+                            list.add(PostReview(
                                 id = "00${i + 1}",
-                                imageProduct = mockImageProduct(),
+                                imageProduct = mockImagePostReview(),
                                 titleProduct = mockListTitle(),
                                 userInfo = UserInfo(
                                     id = "10000${i}",

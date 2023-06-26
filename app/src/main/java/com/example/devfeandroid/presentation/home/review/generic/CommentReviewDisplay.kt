@@ -1,7 +1,7 @@
 package com.example.devfeandroid.presentation.home.review.generic
 
 import android.os.Parcelable
-import com.example.devfeandroid.data.model.producthome.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentProduct
 import kotlinx.parcelize.Parcelize
 import java.lang.Exception
 

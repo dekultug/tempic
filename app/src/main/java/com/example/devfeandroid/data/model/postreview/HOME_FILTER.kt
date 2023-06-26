@@ -1,4 +1,4 @@
-package com.example.devfeandroid.data.model.producthome
+package com.example.devfeandroid.data.model.postreview
 
 import com.example.devfeandroid.R
 import com.example.devfeandroid.extensions.getAppString

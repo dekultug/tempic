@@ -1,6 +1,6 @@
 package com.example.devfeandroid.presentation.home.review.image
 
-import com.example.devfeandroid.data.model.producthome.review.CommentProduct
+import com.example.devfeandroid.data.model.postreview.review.CommentProduct
 
 interface IReviewImageListener {
 

@@ -1,4 +1,4 @@
-package com.example.devfeandroid.data.model.producthome.review
+package com.example.devfeandroid.data.model.postreview.review
 
 import android.os.Parcelable
 import com.example.devfeandroid.data.model.userinfo.UserInfo

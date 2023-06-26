@@ -1,7 +1,6 @@
 package com.example.devfeandroid.presentation.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +8,14 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.devfeandroid.AppConfig
 import com.example.devfeandroid.R
-import com.example.devfeandroid.data.model.producthome.HOME_FILTER
-import com.example.devfeandroid.data.model.producthome.Products
+import com.example.devfeandroid.data.model.postreview.HOME_FILTER
+import com.example.devfeandroid.data.model.postreview.PostReview
 import com.example.devfeandroid.databinding.HomeFragmentBinding
 import com.example.devfeandroid.presentation.BaseFragment
 import com.example.devfeandroid.presentation.MainActivity
 import com.example.devfeandroid.presentation.home.detailvideo.DetailVideoFragment
 import com.example.devfeandroid.presentation.home.review.image.ReviewImageFragment
-import com.example.devfeandroid.presentation.widget.bottomnav.TAB_BOTTOM_NAV
 import com.example.devfeandroid.presentation.widget.filter.FilterView
 import com.example.devfeandroid.presentation.widget.recyclerview.scroll.BaseLoadMoreRecyclerView
 
@@ -28,8 +25,8 @@ class HomeFragment : BaseFragment() {
 
     private var binding: HomeFragmentBinding? = null
 
-    private val productsAdapter by lazy {
-        ProductsAdapter()
+    private val postReviewAdapter by lazy {
+        PostReviewAdapter()
     }
 
     private var baseLoadMoreRecyclerView: BaseLoadMoreRecyclerView? = null
@@ -72,7 +69,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setAdapter() {
-        binding!!.rvHome.adapter = productsAdapter
+        binding!!.rvHome.adapter = postReviewAdapter
         val manager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding!!.rvHome.layoutManager = manager
 
@@ -93,9 +90,9 @@ class HomeFragment : BaseFragment() {
     private fun oberserverData() {
         lifecycleScope.launchWhenCreated {
             viewModel.productListState.collect {
-                mainActivity!!.setState(it, object : MainActivity.IUIState<MutableList<Products>> {
-                    override fun onSuccess(data: MutableList<Products>) {
-                        productsAdapter.submitList(data)
+                mainActivity!!.setState(it, object : MainActivity.IUIState<MutableList<PostReview>> {
+                    override fun onSuccess(data: MutableList<PostReview>) {
+                        postReviewAdapter.submitList(data)
                         baseLoadMoreRecyclerView?.isLoading = false
                         baseLoadMoreRecyclerView?.lastPage = viewModel.page > 7
 
@@ -107,26 +104,26 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun addListener() {
-        productsAdapter.listener = object : IProductsListener {
-            override fun onReviewImage(products: Products) {
+        postReviewAdapter.listener = object : IProductsListener {
+            override fun onReviewImage(postReview: PostReview) {
                 mainActivity!!.replaceFragment(
                     containerID = R.id.flMainContainerFragment,
                     fragment = ReviewImageFragment(),
-                    bundle = bundleOf(ReviewImageFragment.REVIEW_IMAGE_PRODUCT_KEY to products)
+                    bundle = bundleOf(ReviewImageFragment.REVIEW_IMAGE_PRODUCT_KEY to postReview)
                 )
             }
 
-            override fun onReviewVideo(products: Products) {
+            override fun onReviewVideo(postReview: PostReview) {
                 mainActivity!!.replaceFragment(
                     containerID = R.id.flMainContainerFragment,
                     fragment = DetailVideoFragment(),
-                    bundle = bundleOf(DetailVideoFragment.DETAIL_PRODUCT_ITEM to products)
+                    bundle = bundleOf(DetailVideoFragment.DETAIL_PRODUCT_ITEM to postReview)
                 )
             }
         }
     }
 
     private fun removeListener() {
-        productsAdapter.listener = null
+        postReviewAdapter.listener = null
     }
 }

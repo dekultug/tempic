@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.devfeandroid.data.model.producthome.Products
-import com.example.devfeandroid.databinding.ProductsItemBinding
+import com.example.devfeandroid.data.model.postreview.PostReview
+import com.example.devfeandroid.databinding.PostReviewItemBinding
 import com.example.devfeandroid.extensions.gone
 import com.example.devfeandroid.extensions.loadImageUrl
 import com.example.devfeandroid.extensions.setOnSafeClick
 import com.example.devfeandroid.extensions.show
 
-class ProductsAdapter : ListAdapter<Products, ProductsAdapter.ProductsVH>(ProductsDiffCallBack()) {
+class PostReviewAdapter : ListAdapter<PostReview, PostReviewAdapter.ProductsVH>(ProductsDiffCallBack()) {
 
     companion object {
         private const val ITEM_TYPE = 0
@@ -23,7 +23,7 @@ class ProductsAdapter : ListAdapter<Products, ProductsAdapter.ProductsVH>(Produc
     var listener: IProductsListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsVH {
-        return ProductsVH(ProductsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ProductsVH(PostReviewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ProductsVH, position: Int) {
@@ -38,7 +38,7 @@ class ProductsAdapter : ListAdapter<Products, ProductsAdapter.ProductsVH>(Produc
         }
     }
 
-    inner class ProductsVH(private val binding: ProductsItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ProductsVH(private val binding: PostReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.root.setOnSafeClick {
@@ -51,27 +51,27 @@ class ProductsAdapter : ListAdapter<Products, ProductsAdapter.ProductsVH>(Produc
             }
         }
 
-        fun onBind(data: Products) {
-            binding.ivProducts.loadImageUrl(data.getImageProductsDisplay())
-            if (binding.ivProducts.height != 0) {
+        fun onBind(data: PostReview) {
+            binding.ivPostReviewProduct.loadImageUrl(data.getImageProductsDisplay())
+            if (binding.ivPostReviewProduct.height != 0) {
                 if (!mapHeight.containsKey(absoluteAdapterPosition)) {
-                    mapHeight[absoluteAdapterPosition] = binding.ivProducts.height
+                    mapHeight[absoluteAdapterPosition] = binding.ivPostReviewProduct.height
                 } else {
-                    binding.ivProducts.layoutParams = ViewGroup.LayoutParams(binding.ivProducts.width, mapHeight[absoluteAdapterPosition]!!)
+                    binding.ivPostReviewProduct.layoutParams = ViewGroup.LayoutParams(binding.ivPostReviewProduct.width, mapHeight[absoluteAdapterPosition]!!)
                 }
             }
-            binding.tvProductsContent.text = data.getTitleProductsDisplay()
-            Glide.with(binding.root.context).load(data.getAvatarUserInfo()).into(binding.ivProductsImageUser)
+            binding.tvPostReviewDescription.text = data.getTitleProductsDisplay()
+            Glide.with(binding.root.context).load(data.getAvatarUserInfo()).into(binding.ivPostReviewImageUser)
             binding.tvProductsNameUser.text = data.getUserName()
-            binding.tvProductsCountHeart.text = data.getCountNumberHeart().toString()
+            binding.tvPostReviewCountHeart.text = data.getCountNumberHeart().toString()
             if (data.isHasVideo()) {
-                binding.ivProductsPlayVideo.show()
+                binding.ivPostReviewPlayView.show()
             } else {
-                binding.ivProductsPlayVideo.gone()
+                binding.ivPostReviewPlayView.gone()
             }
         }
 
-        fun onBind(data: Products, payload: List<Any>) {
+        fun onBind(data: PostReview, payload: List<Any>) {
 
         }
     }
