@@ -1,6 +1,6 @@
 package com.example.devfeandroid.data
 
-import com.example.devfeandroid.data.model.review.CommentProduct
+import com.example.devfeandroid.data.model.producthome.review.CommentProduct
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 
 fun mockImageProduct(): List<String> {

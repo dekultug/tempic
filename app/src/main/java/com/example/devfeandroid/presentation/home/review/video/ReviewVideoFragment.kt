@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.devfeandroid.R
-import com.example.devfeandroid.data.model.review.CommentProduct
+import com.example.devfeandroid.data.model.producthome.review.CommentProduct
 import com.example.devfeandroid.databinding.ReviewVideoFragmentBinding
 import com.example.devfeandroid.extensions.STRING_DEFAULT
 import com.example.devfeandroid.extensions.disable

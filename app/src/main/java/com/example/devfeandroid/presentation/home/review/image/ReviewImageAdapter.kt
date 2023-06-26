@@ -139,12 +139,14 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         private val sliderImageAdapter = SliderImageAdapter()
         private val pagerSnapHelper = PagerSnapHelper()
 
+        init {
+            binding.rvSliderReviewImage.adapter = sliderImageAdapter
+            binding.rvSliderReviewImage.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
+        }
+
         fun onBind(data: List<String>) {
 
             if (isDisableScroll) {
-                binding.rvSliderReviewImage.adapter = sliderImageAdapter
-                binding.rvSliderReviewImage.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
-
                 sliderImageAdapter.submitList(data)
 
                 pagerSnapHelper.attachToRecyclerView(binding.rvSliderReviewImage)

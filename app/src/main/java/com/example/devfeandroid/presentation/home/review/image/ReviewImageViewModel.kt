@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.devfeandroid.data.model.producthome.Products
-import com.example.devfeandroid.data.model.review.CommentProduct
+import com.example.devfeandroid.data.model.producthome.review.CommentProduct
 import com.example.devfeandroid.data.repo.Repository
 import com.example.devfeandroid.extensions.INT_DEFAULT
 import com.example.devfeandroid.presentation.home.review.generic.COMMENT_REVIEW_TYPE

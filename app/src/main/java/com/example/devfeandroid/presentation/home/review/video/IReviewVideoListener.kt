@@ -1,6 +1,6 @@
 package com.example.devfeandroid.presentation.home.review.video
 
-import com.example.devfeandroid.data.model.review.CommentProduct
+import com.example.devfeandroid.data.model.producthome.review.CommentProduct
 
 interface IReviewVideoListener {
 

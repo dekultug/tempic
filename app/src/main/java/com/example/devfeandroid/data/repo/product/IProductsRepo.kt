@@ -2,8 +2,8 @@ package com.example.devfeandroid.data.repo.product
 
 import com.example.devfeandroid.data.model.producthome.HOME_FILTER
 import com.example.devfeandroid.data.model.producthome.Products
-import com.example.devfeandroid.data.model.review.CommentProduct
-import com.example.devfeandroid.data.model.review.ReviewProduct
+import com.example.devfeandroid.data.model.producthome.review.CommentProduct
+import com.example.devfeandroid.data.model.producthome.review.ReviewProduct
 import kotlinx.coroutines.flow.Flow
 
 interface IProductsRepo {

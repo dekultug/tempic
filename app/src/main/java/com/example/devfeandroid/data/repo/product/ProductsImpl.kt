@@ -7,8 +7,8 @@ import com.example.devfeandroid.data.mockListTitle
 import com.example.devfeandroid.data.mockNameUser
 import com.example.devfeandroid.data.model.producthome.HOME_FILTER
 import com.example.devfeandroid.data.model.producthome.Products
-import com.example.devfeandroid.data.model.review.CommentProduct
-import com.example.devfeandroid.data.model.review.ReviewProduct
+import com.example.devfeandroid.data.model.producthome.review.CommentProduct
+import com.example.devfeandroid.data.model.producthome.review.ReviewProduct
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

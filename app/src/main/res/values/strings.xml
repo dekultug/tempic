@@ -43,5 +43,21 @@
     <string name="other2">Other 2</string>
     <string name="other3">Other 3</string>
     <string name="other4">Other 4</string>
+    <string name="page_slider">%s/10</string>
+    <string name="skin_care">Skin care</string>
+    <string name="sun_care">Sun care</string>
+    <string name="clean_sing">Cleansing</string>
+    <string name="men">Men</string>
+    <string name="base">Base</string>
+    <string name="eys">Eye</string>
+    <string name="lif_cheek">Lip &amp; Cheek</string>
+    <string name="make_up_tool">Make up tool</string>
+    <string name="set_palette">Set/Palette</string>
+    <string name="perfume">Perfume</string>
+    <string name="candle_diffusion">Candle/Diffusion</string>
+    <string name="body_care">Body care</string>
+    <string name="hair_care">Hair care</string>
+    <string name="text_description">Mỹ phẩm giới thiệu mùa này</string>
+    <string name="text_detail_description">Xem ngay thông tin mỹ phẩm và hướng dẫn mới nhất</string>
 
 </resources>

@@ -1,7 +1,7 @@
 package com.example.devfeandroid.presentation.home.review.generic
 
 import android.os.Parcelable
-import com.example.devfeandroid.data.model.review.CommentProduct
+import com.example.devfeandroid.data.model.producthome.review.CommentProduct
 import kotlinx.parcelize.Parcelize
 import java.lang.Exception
 
@@ -11,7 +11,7 @@ data class CommentReviewDisplay(
 
     var isSeeReplyComment: Boolean? = null,
 
-) : Parcelable {
+    ) : Parcelable {
     fun getCommentProduct(): CommentProduct {
         return data ?: throw Exception("ko có dữ liệu của comment")
     }

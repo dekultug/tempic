@@ -73,22 +73,14 @@ class FilterView constructor(
         }
     }
 
-    override fun dispatchSaveInstanceState(container: SparseArray<Parcelable>) {
-        dispatchFreezeSelfOnly(container)
-    }
-
-    override fun dispatchRestoreInstanceState(container: SparseArray<Parcelable>) {
-        dispatchThawSelfOnly(container)
-    }
-
-    override fun onSaveInstanceState(): Parcelable? {
-        val viewState =  saveInstanceState(super.onSaveInstanceState())
-        return ViewState(viewState, currentIndex)
+    override fun onSaveInstanceState(): Parcelable {
+        val savedState = super.onSaveInstanceState()
+        return ViewState(savedState, currentIndex)
     }
 
     override fun onRestoreInstanceState(state: Parcelable?) {
         val viewState = state as? ViewState
-        super.onRestoreInstanceState(restoreInstanceState(viewState?.savedState))
+        super.onRestoreInstanceState(viewState?.savedState ?: state)
         currentIndex = viewState?.index ?: 0
         filterAdapter.selectItemOld(currentIndex)
     }
@@ -117,7 +109,7 @@ class FilterView constructor(
         }
     }
 
-    class ViewState(val savedState: Parcelable?, val index: Int) : BaseSavedState(savedState)
+    class ViewState(val savedState: Parcelable?, val index: Int?) : BaseSavedState(savedState)
 
     interface IFilterViewEvent {
         fun onFilter(title: String, position: Int)
