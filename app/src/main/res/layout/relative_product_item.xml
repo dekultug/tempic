@@ -10,8 +10,8 @@
         android:id="@+id/ivRelativeProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_8"
         android:src="@drawable/img_product_relative"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvRelativeProductSale" />
@@ -20,12 +20,12 @@
         android:id="@+id/tvRelativeProductSale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_16"
         android:fontFamily="@font/notosans_medium"
         android:text="@string/sales"
         android:textColor="@color/red_tpA"
-        android:textSize="13sp"
+        android:textSize="@dimen/dimen_text_size_12"
         app:layout_constraintStart_toEndOf="@id/ivRelativeProduct"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +36,7 @@
         android:fontFamily="@font/notosans_medium"
         android:text="@string/name_product_sale"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="@dimen/dimen_text_size_14"
         app:layout_constraintStart_toStartOf="@id/tvRelativeProductSale"
         app:layout_constraintTop_toBottomOf="@id/tvRelativeProductSale" />
 
@@ -50,11 +50,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="@dimen/dimen_4"
         android:fontFamily="@font/notosans_regular"
         android:text="@string/convert_money"
         android:textColor="@color/black"
-        android:textSize="13sp"
+        android:textSize="@dimen/dimen_text_size_12"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/svRelativeProduct"
         app:layout_constraintTop_toBottomOf="@id/svRelativeProduct" />
@@ -62,7 +62,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:padding="@dimen/dimen_20"
         android:src="@drawable/ic_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

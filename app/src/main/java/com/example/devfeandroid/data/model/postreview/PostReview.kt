@@ -39,7 +39,12 @@ data class PostReview(
     }
 
     fun getImageProductsDisplay(): String {
-        return imageProduct?.first() ?: STRING_DEFAULT
+        return if (imageProduct != null) {
+            val index = (0 until imageProduct!!.size).random()
+            imageProduct!![index]
+        } else {
+            STRING_DEFAULT
+        }
     }
 
     fun getTitleProductsDisplay(): String {

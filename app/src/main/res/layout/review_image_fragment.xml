@@ -10,17 +10,17 @@
         android:id="@+id/ivReviewImageBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:padding="10dp"
+        android:layout_marginVertical="@dimen/dimen_10"
+        android:padding="@dimen/dimen_10"
         android:src="@drawable/ic_back_black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivReviewImageAvatarUser"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
+        android:layout_width="@dimen/dimen_30"
+        android:layout_height="@dimen/dimen_30"
+        android:layout_marginStart="@dimen/dimen_10"
         app:layout_constraintBottom_toBottomOf="@id/ivReviewImageBack"
         app:layout_constraintStart_toEndOf="@id/ivReviewImageBack"
         app:layout_constraintTop_toTopOf="@id/ivReviewImageBack"
@@ -31,11 +31,11 @@
         android:id="@+id/tvReviewImageNameUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_2"
         android:fontFamily="@font/notosans_semi_bold"
         android:textColor="@color/main_color"
-        android:textSize="14sp"
+        android:textSize="@dimen/dimen_text_size_14"
         app:layout_constraintBottom_toBottomOf="@id/ivReviewImageBack"
         app:layout_constraintStart_toEndOf="@id/ivReviewImageAvatarUser"
         app:layout_constraintTop_toTopOf="@id/ivReviewImageBack"
@@ -45,7 +45,7 @@
         android:id="@+id/fvReviewImageUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/dimen_16"
         app:layout_constraintBottom_toBottomOf="@id/ivReviewImageBack"
         app:layout_constraintStart_toEndOf="@id/tvReviewImageNameUser"
         app:layout_constraintTop_toTopOf="@id/ivReviewImageBack" />
@@ -62,7 +62,7 @@
     <View
         android:id="@+id/vReviewImageTop"
         android:layout_width="match_parent"
-        android:layout_height="6dp"
+        android:layout_height="@dimen/dimen_6"
         android:layout_marginTop="4dp"
         android:background="@color/background_gray"
         app:layout_constraintTop_toBottomOf="@id/fvReviewImageUser" />
@@ -90,7 +90,7 @@
         <LinearLayout
             android:id="@+id/llReviewImageReplyUser"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/dimen_30"
             android:background="@color/gray_light"
             android:orientation="horizontal"
             android:visibility="gone"
@@ -100,13 +100,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/dimen_34"
                 android:fontFamily="@font/notosans_medium"
                 android:gravity="center"
-                android:paddingVertical="4dp"
+                android:paddingVertical="@dimen/dimen_4"
                 android:text="@string/reply"
                 android:textColor="@color/black"
-                android:textSize="13sp" />
+                android:textSize="@dimen/dimen_text_size_12" />
 
             <TextView
                 android:id="@+id/tvReviewImageReplyUserName"
@@ -116,15 +116,15 @@
                 android:fontFamily="@font/notosans_semi_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="13sp"
+                android:textSize="@dimen/dimen_text_size_12"
                 tools:text="@string/reply" />
 
             <ImageView
-                android:layout_width="4dp"
-                android:layout_height="4dp"
+                android:layout_width="@dimen/dimen_4"
+                android:layout_height="@dimen/dimen_4"
                 android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginBottom="@dimen/dimen_1"
                 android:background="@drawable/ic_dot"
                 app:backgroundTint="@color/gray" />
 
@@ -137,25 +137,25 @@
                 android:fontFamily="@font/notosans_medium"
                 android:foreground="?selectableItemBackgroundBorderless"
                 android:gravity="center"
-                android:paddingHorizontal="10dp"
+                android:paddingHorizontal="@dimen/dimen_10"
                 android:text="@string/cancel"
-                android:textSize="13sp" />
+                android:textSize="@dimen/dimen_text_size_12" />
 
         </LinearLayout>
 
         <View
             android:id="@+id/vReviewImage"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="12dp"
+            android:layout_height="@dimen/dimen_1"
+            android:layout_marginBottom="@dimen/dimen_text_size_12"
             android:background="@color/gray_light"
             app:layout_constraintBottom_toTopOf="@id/clReviewImageCreate" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clReviewImageCreate"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="12dp"
+            android:layout_height="@dimen/dimen_40"
+            android:layout_margin="@dimen/dimen_12"
             android:background="@drawable/shape_bg_gray_corner_8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,14 +165,14 @@
                 android:id="@+id/edtReviewImage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="27dp"
+                android:layout_marginHorizontal="@dimen/dimen_26"
                 android:background="@null"
                 android:fontFamily="@font/notosans_regular"
                 android:gravity="center_vertical"
                 android:hint="@string/hint_review"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray_light"
-                android:textSize="13sp"
+                android:textSize="@dimen/dimen_text_size_12"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/ivReviewImageIcon"
                 app:layout_constraintStart_toStartOf="parent"
@@ -182,7 +182,7 @@
                 android:id="@+id/ivReviewImageIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
+                android:padding="@dimen/dimen_4"
                 android:src="@drawable/ic_icon"
                 app:layout_constraintBottom_toBottomOf="@id/ivReviewImageSend"
                 app:layout_constraintEnd_toStartOf="@id/ivReviewImageSend"
@@ -192,11 +192,11 @@
                 android:id="@+id/ivReviewImageSend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="7dp"
+                android:layout_marginEnd="@dimen/dimen_6"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?selectableItemBackground"
-                android:padding="4dp"
+                android:padding="@dimen/dimen_4"
                 android:src="@drawable/ic_send_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -50,7 +50,7 @@ class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
     fun getListReview(isLoadMore: Boolean = false) {
         viewModelScope.launch {
-            val repo = Repository.getProductRepo()
+            val repo = Repository.getPostRepo()
             repo.getListReviewProducts()
                 .onStart {
                     if (isLoadMore) {
@@ -86,7 +86,7 @@ class ReviewImageViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
     fun getListChildReview(commentId: String, isSeeMore: Boolean = false) {
         viewModelScope.launch {
-            val repo = Repository.getProductRepo()
+            val repo = Repository.getPostRepo()
             repo.getListChildReview(commentId).onStart {
                 if (isSeeMore) {
                     /**

@@ -10,10 +10,10 @@
 
     <ImageView
         android:id="@+id/ivHomeLogo"
-        android:layout_width="100dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="18dp"
+        android:layout_width="@dimen/dimen_100"
+        android:layout_height="@dimen/dimen_14"
+        android:layout_marginStart="@dimen/dimen_12"
+        android:layout_marginTop="@dimen/dimen_18"
         android:scaleType="centerCrop"
         android:src="@drawable/bg_logo"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
     <com.example.devfeandroid.presentation.widget.filter.FilterView
         android:id="@+id/fvHomeTop"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dimen_50"
         app:fv_min_width="@dimen/dimen_54"
         app:fv_type="HOME"
         app:fv_font_family_item_select="@font/notosans_medium"

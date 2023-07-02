@@ -25,13 +25,13 @@
             android:fontFamily="@font/notosans_regular"
             android:text="@string/see_more_review"
             android:textColor="@color/gray"
-            android:textSize="12sp" />
+            android:textSize="@dimen/dimen_text_size_12" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/dimen_8"
             android:src="@drawable/ic_gray_up" />
 
     </LinearLayout>

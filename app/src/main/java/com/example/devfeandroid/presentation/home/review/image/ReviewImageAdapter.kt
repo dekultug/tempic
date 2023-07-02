@@ -1,11 +1,15 @@
 package com.example.devfeandroid.presentation.home.review.image
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.devfeandroid.R
 import com.example.devfeandroid.data.model.postreview.PostReview
 import com.example.devfeandroid.databinding.BaseLoadMoreItemBinding
@@ -82,21 +86,63 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            SLIDER_TYPE -> SliderProductVH(SliderReviewImageItemBinding.inflate(layoutInflater, parent, false))
+            SLIDER_TYPE -> SliderProductVH(
+                SliderReviewImageItemBinding.inflate(
+                    layoutInflater,
+                    parent,
+                    false
+                )
+            )
 
             INFO_TYPE -> InfoProductVH(InfoReviewItemBinding.inflate(layoutInflater, parent, false))
 
-            RELATIVE_TYPE -> RelativeProductVH(RelativeProductItemBinding.inflate(layoutInflater, parent, false))
+            RELATIVE_TYPE -> RelativeProductVH(
+                RelativeProductItemBinding.inflate(
+                    layoutInflater,
+                    parent,
+                    false
+                )
+            )
 
-            TOTAL_REVIEW_TYPE -> CountReviewVH(CountReviewItemBinding.inflate(layoutInflater, parent, false))
+            TOTAL_REVIEW_TYPE -> CountReviewVH(
+                CountReviewItemBinding.inflate(
+                    layoutInflater,
+                    parent,
+                    false
+                )
+            )
 
-            PARENT_REVIEW_TYPE -> ParentReviewVH(CommentReviewItemBinding.inflate(layoutInflater, parent, false))
+            PARENT_REVIEW_TYPE -> ParentReviewVH(
+                CommentReviewItemBinding.inflate(
+                    layoutInflater,
+                    parent,
+                    false
+                )
+            )
 
-            CHILD_REVIEW_TYPE -> ChildReviewVH(CommentReviewItemBinding.inflate(layoutInflater, parent, false))
+            CHILD_REVIEW_TYPE -> ChildReviewVH(
+                CommentReviewItemBinding.inflate(
+                    layoutInflater,
+                    parent,
+                    false
+                )
+            )
 
-            LOAD_MORE_TYPE -> LoadMoreVH(BaseLoadMoreItemBinding.inflate(layoutInflater, parent, false))
+            LOAD_MORE_TYPE -> LoadMoreVH(
+                BaseLoadMoreItemBinding.inflate(
+                    layoutInflater,
+                    parent,
+                    false
+                )
+            )
 
-            SEE_MORE_REVIEW -> SeeMoreVH(SeeMoreReviewItemBinding.inflate(layoutInflater, parent, false))
+            SEE_MORE_REVIEW -> SeeMoreVH(
+                SeeMoreReviewItemBinding.inflate(
+                    layoutInflater,
+                    parent,
+                    false
+                )
+            )
 
             else -> LoadMoreVH(BaseLoadMoreItemBinding.inflate(layoutInflater, parent, false))
         }
@@ -119,7 +165,11 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: MutableList<Any>) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
         if (payloads.isEmpty()) {
             onBindViewHolder(holder, position)
         } else {
@@ -131,7 +181,8 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         }
     }
 
-    inner class SliderProductVH(private val binding: SliderReviewImageItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class SliderProductVH(private val binding: SliderReviewImageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         private val sliderImageAdapter = SliderImageAdapter()
         private val pagerSnapHelper = PagerSnapHelper()
@@ -145,15 +196,18 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
 
             if (isDisableScroll) {
                 sliderImageAdapter.submitList(data)
-
                 pagerSnapHelper.attachToRecyclerView(binding.rvSliderReviewImage)
-                binding.ciSliderReviewImage.attachToRecyclerView(binding.rvSliderReviewImage, pagerSnapHelper)
+                binding.ciSliderReviewImage.attachToRecyclerView(
+                    binding.rvSliderReviewImage,
+                    pagerSnapHelper
+                )
                 isDisableScroll = false
             }
         }
     }
 
-    inner class InfoProductVH(private val binding: InfoReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class InfoProductVH(private val binding: InfoReviewItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(data: PostReview) {
             binding.tvInfoReviewTitle.text = data.getTitleProductsDisplay()
@@ -161,15 +215,18 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         }
     }
 
-    inner class RelativeProductVH(private val binding: RelativeProductItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class RelativeProductVH(private val binding: RelativeProductItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
-    inner class CountReviewVH(private val binding: CountReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CountReviewVH(private val binding: CountReviewItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: Int) {
             binding.tvCountReview.text = getAppString(R.string.count_review, data)
         }
     }
 
-    inner class ParentReviewVH(private val binding: CommentReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ParentReviewVH(private val binding: CommentReviewItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.root.setOnSafeClick {
@@ -218,7 +275,9 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
 
         private fun bindData(data: CommentReviewDisplay) {
             binding.apply {
-                ivCommentReviewAvatarUser.loadImageUrl(data.getCommentProduct().getInfoUser().getUserImage())
+                ivCommentReviewAvatarUser.loadImageUrl(
+                    data.getCommentProduct().getInfoUser().getUserImage()
+                )
                 tvCommentReviewNameUser.text = data.getCommentProduct().getInfoUser().nameUser
                 tvCommentReviewContent.text = data.getCommentProduct().getContentComment()
                 tvCommentReviewTimePost.text = data.getCommentProduct().getTimePostComment()
@@ -240,14 +299,16 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         private fun checkHasLike(data: CommentReviewDisplay) {
             if (data.getCommentProduct().getCountLike() != INT_DEFAULT) {
                 binding.tvCommentReviewCountLike.show()
-                binding.tvCommentReviewCountLike.text = data.getCommentProduct().getCountLike().toString()
+                binding.tvCommentReviewCountLike.text =
+                    data.getCommentProduct().getCountLike().toString()
             } else {
                 binding.tvCommentReviewCountLike.gone()
             }
         }
     }
 
-    inner class ChildReviewVH(private val binding: CommentReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ChildReviewVH(private val binding: CommentReviewItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         init {
 
@@ -258,7 +319,9 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
 
                 setUpCoordinates()
 
-                ivCommentReviewAvatarUser.loadImageUrl(data.getCommentProduct().getInfoUser().getUserImage())
+                ivCommentReviewAvatarUser.loadImageUrl(
+                    data.getCommentProduct().getInfoUser().getUserImage()
+                )
                 tvCommentReviewNameUser.text = data.getCommentProduct().getInfoUser().nameUser
                 tvCommentReviewContent.text = data.getCommentProduct().getContentComment()
                 tvCommentReviewTimePost.text = data.getCommentProduct().getTimePostComment()
@@ -274,7 +337,8 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         private fun setUpCoordinates() {
             val left = binding.tvCommentReviewNameUser.layoutParams as ViewGroup.MarginLayoutParams
 
-            val offset = binding.ivCommentReviewAvatarUser.layoutParams as ViewGroup.MarginLayoutParams
+            val offset =
+                binding.ivCommentReviewAvatarUser.layoutParams as ViewGroup.MarginLayoutParams
 
             val params = binding.clCommentReviewRoot.layoutParams as ViewGroup.MarginLayoutParams
 
@@ -283,7 +347,8 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
         }
     }
 
-    inner class SeeMoreVH(private val binding: SeeMoreReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class SeeMoreVH(private val binding: SeeMoreReviewItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.llSeeMoreReview.setOnSafeClick {
@@ -308,9 +373,11 @@ class ReviewImageAdapter : ListAdapter<Any, RecyclerView.ViewHolder>(ReviewImage
                 key = k
             }
 
-            binding.tvSeeMoreReviewCountRemaining.text = getAppString(R.string.see_more_review, data[key])
+            binding.tvSeeMoreReviewCountRemaining.text =
+                getAppString(R.string.see_more_review, data[key])
         }
     }
 
-    inner class LoadMoreVH(private val binding: BaseLoadMoreItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class LoadMoreVH(private val binding: BaseLoadMoreItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

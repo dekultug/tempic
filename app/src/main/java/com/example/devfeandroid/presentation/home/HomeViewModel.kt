@@ -29,7 +29,7 @@ class HomeViewModel : ViewModel() {
 
     fun getListProduct(isReload: Boolean = false) {
         viewModelScope.launch {
-            val repo = Repository.getProductRepo()
+            val repo = Repository.getPostRepo()
             if (isReload) {
                 _productListState.value = StateData.Loading()
                 page = 1

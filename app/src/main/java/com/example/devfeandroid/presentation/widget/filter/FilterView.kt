@@ -30,10 +30,6 @@ class FilterView constructor(
 
     private var currentIndex = 0
 
-    private var mapIndexFilter: MutableMap<FILTER_TYPE, Int> = EnumMap(FILTER_TYPE::class.java)
-
-    private var type: FILTER_TYPE = FILTER_TYPE.HOME
-
     var listener: IFilterViewEvent? = null
 
     val filterDisplay by lazy {
@@ -51,10 +47,6 @@ class FilterView constructor(
         Log.d(TAG, "onFinishInflate: ")
         rvList.adapter = this.filterAdapter
         rvList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        if (!mapIndexFilter.containsKey(type)) {
-            mapIndexFilter[type] = 0
-        }
-        mapIndexFilter[type] = currentIndex
         filterAdapter.listener = object : FilterAdapter.IFilterListener {
             override fun onSelect(filterDisplay: FilterData, position: Int) {
                 listener?.onFilter(filterDisplay.title ?: STRING_DEFAULT, position)
@@ -68,7 +60,6 @@ class FilterView constructor(
                     }
                 }
                 currentIndex = position
-                mapIndexFilter[type] = currentIndex
             }
         }
     }
@@ -89,7 +80,6 @@ class FilterView constructor(
         val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.FilterView, 0, 0)
         val filterView = typedArray.getInt(R.styleable.FilterView_fv_type, 0)
         FILTER_TYPE.valueOfName(filterView)?.let {
-            type = it
             filterAdapter.addContentListFilter(filterDisplay.getListFilter(it))
         }
 

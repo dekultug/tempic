@@ -120,7 +120,7 @@ class BottomBarNavigationView constructor(
             }
 
             TAB_BOTTOM_NAV.POST -> {
-                ivPost?.setImageResource(R.drawable.ic_post_select)
+                ivPost?.setImageResource(R.drawable.ic_note_blue)
             }
 
             TAB_BOTTOM_NAV.GIFT -> {

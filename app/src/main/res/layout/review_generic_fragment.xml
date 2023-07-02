@@ -9,11 +9,11 @@
         android:id="@+id/tvReviewGenericCountComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="@dimen/dimen_12"
+        android:layout_marginTop="@dimen/dimen_4"
         android:fontFamily="@font/notosans_regular"
         android:textColor="@color/black"
-        android:textSize="13sp"
+        android:textSize="@dimen/dimen_12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="345 bình luận" />
@@ -22,14 +22,14 @@
         android:id="@+id/rvReviewGeneric"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dimen_10"
         app:layout_constraintBottom_toTopOf="@id/llReviewGenericReplyUser"
         app:layout_constraintTop_toBottomOf="@id/tvReviewGenericCountComment" />
 
     <LinearLayout
         android:id="@+id/llReviewGenericReplyUser"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="@dimen/dimen_30"
         android:background="@color/gray_light"
         android:orientation="horizontal"
         android:visibility="gone"
@@ -39,30 +39,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="@dimen/dimen_24"
             android:fontFamily="@font/notosans_medium"
             android:gravity="center"
-            android:paddingVertical="4dp"
+            android:paddingVertical="@dimen/dimen_4"
             android:text="@string/reply"
             android:textColor="@color/black"
-            android:textSize="13sp" />
+            android:textSize="@dimen/dimen_text_size_12" />
 
         <TextView
             android:id="@+id/tvReviewGenericReplyUserName"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="@dimen/dimen_6"
             android:fontFamily="@font/notosans_semi_bold"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="13sp"
+            android:textSize="@dimen/dimen_text_size_12"
             tools:text="@string/reply" />
 
         <ImageView
-            android:layout_width="4dp"
-            android:layout_height="4dp"
+            android:layout_width="@dimen/dimen_4"
+            android:layout_height="@dimen/dimen_4"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginBottom="1dp"
             android:background="@drawable/ic_dot"
             app:backgroundTint="@color/gray" />
@@ -76,9 +76,9 @@
             android:fontFamily="@font/notosans_medium"
             android:foreground="?selectableItemBackgroundBorderless"
             android:gravity="center"
-            android:paddingHorizontal="10dp"
+            android:paddingHorizontal="@dimen/dimen_10"
             android:text="@string/cancel"
-            android:textSize="13sp" />
+            android:textSize="@dimen/dimen_text_size_12" />
 
     </LinearLayout>
 

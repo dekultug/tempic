@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/ivBottomBarNavigationViewHome"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/dimen_20"
+            android:layout_height="@dimen/dimen_20"
             android:layout_gravity="center"
             android:src="@drawable/ic_nav_home_select" />
 
@@ -34,8 +34,8 @@
 
         <ImageView
             android:id="@+id/ivBottomBarNavigationViewCart"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/dimen_20"
+            android:layout_height="@dimen/dimen_20"
             android:layout_gravity="center"
             android:src="@drawable/ic_cart" />
 
@@ -52,8 +52,8 @@
 
         <ImageView
             android:id="@+id/ivBottomBarNavigationViewPost"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/dimen_20"
+            android:layout_height="@dimen/dimen_20"
             android:layout_gravity="center"
             android:src="@drawable/ic_post" />
 
@@ -70,8 +70,8 @@
 
         <ImageView
             android:id="@+id/ivBottomBarNavigationViewGift"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/dimen_20"
+            android:layout_height="@dimen/dimen_20"
             android:layout_gravity="center"
             android:src="@drawable/ic_gift" />
 
@@ -88,8 +88,8 @@
 
         <ImageView
             android:id="@+id/ivBottomBarNavigationViewPersonal"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/dimen_20"
+            android:layout_height="@dimen/dimen_20"
             android:layout_gravity="center"
             android:src="@drawable/ic_person" />
 

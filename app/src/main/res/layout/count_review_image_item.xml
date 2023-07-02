@@ -9,10 +9,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="@dimen/dimen_12"
         android:fontFamily="@font/notosans_medium"
         android:textColor="@color/black"
-        android:textSize="13sp"
+        android:textSize="@dimen/dimen_text_size_12"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

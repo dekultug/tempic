@@ -9,7 +9,7 @@
         android:id="@+id/flFilterRoot"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="@dimen/dimen_10">
 
         <TextView
             android:id="@+id/tvFilterTitle"
@@ -17,15 +17,15 @@
             android:layout_height="wrap_content"
             tools:text="Home"
             android:layout_gravity="center"
-            android:textSize="14sp"
+            android:textSize="@dimen/dimen_text_size_14"
             android:fontFamily="@font/notosans_medium"/>
 
     </FrameLayout>
 
     <View
         android:id="@+id/vFilterSelect"
-        android:layout_width="20dp"
-        android:layout_height="3dp"
+        android:layout_width="@dimen/dimen_20"
+        android:layout_height="@dimen/dimen_4"
         android:background="@color/main_color"
         android:layout_gravity="center"/>
 

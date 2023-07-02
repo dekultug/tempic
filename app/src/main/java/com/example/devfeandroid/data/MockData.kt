@@ -1,6 +1,7 @@
 package com.example.devfeandroid.data
 
 import com.example.devfeandroid.data.model.postreview.review.CommentPost
+import com.example.devfeandroid.data.model.product.Product
 import com.example.devfeandroid.data.model.userinfo.UserInfo
 
 fun mockImagePostReview(): List<String> {
@@ -130,9 +131,36 @@ fun mockListCommentProduct(parent: Boolean = true, parentId: String? = null): Li
     return list
 }
 
-fun main() {
-    val x = mockListCommentProduct()
-    mockCommentReview(1, false)
-    x
-    println(1)
+fun mockNameProduct(): String {
+    return arrayOf(
+        "Dr.G(닥터지)"
+    ).random()
+}
+
+fun mockDescriptionProduct(): String {
+    return arrayOf(
+        "Favorite summer fragrance",
+        "A La Rose Eau de Parfum 35ml",
+        "Blanche Eau De Parfum 50ml",
+        "Red Blemish Clear Sooth\n" +
+                "ing Cream 70ml",
+    ).random()
+}
+
+fun mockImageProduct(): String {
+    return arrayOf(
+        "https://toplist.vn/images/800px/whoo-568911.jpg",
+        "https://chiaki.vn/upload/news/content/2021/08/my-pham-han-quoc-sulwhasoo-jpg-1629694976-23082021120256.jpg",
+        "https://www.elle.vn/wp-content/uploads/2016/11/01/my-pham-han-quoc-4.jpg",
+        "https://www.elle.vn/wp-content/uploads/2016/11/09/sulwhasoo-luminature-essential-finisher-1024x1024.jpg"
+    ).toString()
+}
+
+fun mockProduct(): Product {
+    return Product(
+        id = (0..1000000).random().toString(),
+        nameProduct = mockNameProduct(),
+        descriptionProduct = mockDescriptionProduct(),
+        imageProduct = mockImageProduct()
+    )
 }

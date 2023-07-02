@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.*
+import androidx.constraintlayout.helper.widget.MotionPlaceholder
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
@@ -109,7 +110,6 @@ fun TextView.textColorMain() {
 fun ImageView.loadImageUrl(url: String) {
     Glide.with(this)
         .load(url)
-        .placeholder(R.drawable.image_default)
         .into(this)
 }
 
@@ -158,3 +158,4 @@ fun ViewGroup.restoreInstanceState(state: Parcelable?): Parcelable? {
     }
     return newState
 }
+

@@ -22,18 +22,18 @@
             android:id="@+id/clDetailVideoShowAction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:elevation="10dp">
+            android:elevation="@dimen/dimen_10">
 
             <ImageView
                 android:id="@+id/ivDetailVideoBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_20"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?selectableItemBackgroundBorderless"
-                android:padding="10dp"
+                android:padding="@dimen/dimen_10"
                 android:src="@drawable/ic_back_black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +42,7 @@
                 android:id="@+id/ivDetailVideoMore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="@dimen/dimen_10"
                 android:src="@drawable/ic_more"
                 app:layout_constraintBottom_toBottomOf="@id/ivDetailVideoBack"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,10 +57,10 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivDetailVideoImageUser"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_width="@dimen/dimen_34"
+                    android:layout_height="@dimen/dimen_34"
+                    android:layout_marginStart="@dimen/dimen_12"
+                    android:layout_marginBottom="@dimen/dimen_20"
                     app:layout_constraintBottom_toTopOf="@id/ivDetailVideoFull"
                     app:layout_constraintStart_toStartOf="parent"
                     app:shapeAppearanceOverlay="@style/CornerImageView"
@@ -70,7 +70,7 @@
                     android:id="@+id/tvDetailVideoNameUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/dimen_10"
                     android:fontFamily="@font/notosans_medium"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="@id/ivDetailVideoImageUser"
@@ -83,8 +83,8 @@
                     android:id="@+id/fvDetailVideo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/dimen_2"
                     app:layout_constraintBottom_toBottomOf="@id/ivDetailVideoImageUser"
                     app:layout_constraintStart_toEndOf="@id/tvDetailVideoNameUser"
                     app:layout_constraintTop_toTopOf="@id/ivDetailVideoImageUser" />
@@ -93,8 +93,8 @@
                     android:id="@+id/ivDetailVideoFull"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="40dp"
-                    android:padding="12dp"
+                    android:layout_marginBottom="@dimen/dimen_40"
+                    android:padding="@dimen/dimen_12"
                     android:src="@drawable/ic_full_screen"
                     app:layout_constraintBottom_toTopOf="@id/llDetailVideo"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -103,7 +103,7 @@
                     android:id="@+id/tvDetailVideoDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="@dimen/dimen_12"
                     android:ellipsize="end"
                     android:fontFamily="@font/notosans_regular"
                     android:maxLines="3"
@@ -116,7 +116,7 @@
                 <LinearLayout
                     android:id="@+id/llDetailVideo"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/dimen_40"
                     android:background="@color/transparent_dark_background"
                     app:layout_constraintBottom_toTopOf="@id/clDetailVideoInteractVideo">
 
@@ -124,11 +124,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="@dimen/dimen_12"
                         android:fontFamily="@font/notosans_bold"
                         android:text="-20%"
                         android:textColor="@color/red_dark"
-                        android:textSize="13sp" />
+                        android:textSize="@dimen/dimen_text_size_12" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -138,14 +138,14 @@
                         android:fontFamily="@font/notosans_regular"
                         android:text="@string/table_color"
                         android:textColor="@color/white_light"
-                        android:textSize="13sp" />
+                        android:textSize="@dimen/dimen_text_size_12" />
 
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clDetailVideoInteractVideo"
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
+                    android:layout_height="@dimen/dimen_58"
                     android:background="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent">
 
@@ -153,10 +153,10 @@
                         android:id="@+id/tvDetailVideoCountComment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="@dimen/dimen_10"
                         android:fontFamily="@font/notosans_regular"
                         android:textColor="@color/white"
-                        android:textSize="11sp"
+                        android:textSize="@dimen/dimen_text_size_12"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -169,7 +169,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?selectableItemBackgroundBorderless"
-                        android:padding="8dp"
+                        android:padding="@dimen/dimen_8"
                         android:src="@drawable/ic_review"
                         app:layout_constraintBottom_toBottomOf="@id/tvDetailVideoCountComment"
                         app:layout_constraintEnd_toStartOf="@id/tvDetailVideoCountComment"
@@ -179,10 +179,10 @@
                         android:id="@+id/tvDetailViewCountLike"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="@dimen/dimen_8"
                         android:fontFamily="@font/notosans_regular"
                         android:textColor="@color/white"
-                        android:textSize="11sp"
+                        android:textSize="@dimen/dimen_text_size_12"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivDetailVideoComment"
                         app:layout_constraintTop_toTopOf="parent"
@@ -195,7 +195,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?selectableItemBackgroundBorderless"
-                        android:padding="10dp"
+                        android:padding="@dimen/dimen_10"
                         android:src="@drawable/ic_heart_white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/tvDetailViewCountLike"
@@ -205,8 +205,8 @@
                         android:id="@+id/ivDetailVideoReplyComment"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="48dp"
+                        android:layout_marginStart="@dimen/dimen_8"
+                        android:layout_marginEnd="@dimen/dimen_48"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?selectableItemBackgroundBorderless"

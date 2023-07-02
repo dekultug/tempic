@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/ivStoreLogo"
-        android:layout_width="100dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="18dp"
+        android:layout_width="@dimen/dimen_100"
+        android:layout_height="@dimen/dimen_14"
+        android:layout_marginStart="@dimen/dimen_12"
+        android:layout_marginTop="@dimen/dimen_18"
         android:scaleType="centerCrop"
         android:src="@drawable/bg_logo"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +31,8 @@
     <com.example.devfeandroid.presentation.widget.filter.FilterView
         android:id="@+id/fvStore"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_marginTop="@dimen/dimen_12"
         app:fv_type="STORE"
         app:fv_font_family_item_select="@font/notosans_semi_bold"
         app:fv_font_family_item_un_select="@font/notosans_medium"
