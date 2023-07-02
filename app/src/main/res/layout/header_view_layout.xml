@@ -45,7 +45,7 @@
         app:layout_constraintStart_toEndOf="@id/llHeaderViewLeft"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.example.devfeandroid.widget.filter.FilterView
+        <com.example.devfeandroid.presentation.widget.filter.FilterView
             android:id="@+id/fvHeaderViewCenter"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

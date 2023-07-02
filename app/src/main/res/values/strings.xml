@@ -5,6 +5,15 @@
     <string name="hint_query_search">Bạn muốn tìm gì?</string>
     <string name="un_follow_user">Theo dõi</string>
     <string name="follow_user">Đang theo dõi</string>
+    <string name="comment_input">Vui lòng nhập bình luận</string>
+    <string name="table_color">Bảng màu Peripera All Take Mood</string>
+    <string name="test_text_long">Tôi nghĩ điều quan trọng nhất kể từ khi đắp mặt nạ là trang điểm mắt. Mỗi sáng tôi đều trang điểm mắt m...
+#peripera #palette</string>
+    <string name="cancel">Hủy</string>
+    <string name="price_sale">35,640원</string>
+    <string name="price_original">36,000원</string>
+    <string name="rate_average">4.8</string>
+    <string name="count_rate">(12)</string>
 
     //home
     <string name="all">ALL</string>
@@ -12,4 +21,46 @@
     <string name="now">Now</string>
     <string name="follow">Follow</string>
 
+    //review
+    <string name="reply">Trả lời</string>
+    <string name="not_reply">Đóng</string>
+    <string name="report">Báo cáo</string>
+    <string name="hint_review">Vui lòng nhập bình luận</string>
+    <string name="count_review">%s bình luận</string>
+    <string name="see_more_review">Xem câu trả lời (%s)</string>
+    <string name="time_post">2022-05-31 13:59</string>
+    <string name="sales">Giảm giá 1%</string>
+    <string name="name_product_sale">A’Clear Balancing Toner 200ml</string>
+    <string name="convert_money">$19,40</string>
+
+    // store
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="review">Review</string>
+    <string name="theme">Theme</string>
+    <string name="brand">Rrand</string>
+    <string name="other1">Other 1</string>
+    <string name="other2">Other 2</string>
+    <string name="other3">Other 3</string>
+    <string name="other4">Other 4</string>
+    <string name="page_slider">%s/10</string>
+    <string name="skin_care">Skin care</string>
+    <string name="sun_care">Sun care</string>
+    <string name="clean_sing">Cleansing</string>
+    <string name="men">Men</string>
+    <string name="base">Base</string>
+    <string name="eye">Eye</string>
+    <string name="lif_cheek">Lip &amp; Cheek</string>
+    <string name="make_up_tool">Make up tool</string>
+    <string name="set_palette">Set/Palette</string>
+    <string name="perfume">Perfume</string>
+    <string name="candle_diffusion">Candle/Diffusion</string>
+    <string name="body_care">Body care</string>
+    <string name="hair_care">Hair care</string>
+    <string name="text_description">Mỹ phẩm giới thiệu mùa này</string>
+    <string name="text_detail_description">Xem ngay thông tin mỹ phẩm và hướng dẫn mới nhất</string>
+    <string name="category_body_care">Mùa thu tươi đẹp, chăm sóc cơ thể\ncho em</string>
+    <string name="category_fragrant">Giảm giá nước hoa nữ phổ biến</string>
+    <string name="see_all">Xem tất cả</string>
+        
 </resources>

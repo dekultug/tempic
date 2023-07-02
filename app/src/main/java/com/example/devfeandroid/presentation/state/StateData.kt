@@ -9,7 +9,7 @@ sealed class StateData<Data>(
 
     var status: STATE_TYPE,
 
-    var exception: Exception? = null,
+    var exception: Throwable? = null,
 ) : IStateData {
 
     class Init<Data> : StateData<Data>(null, null, STATE_TYPE.INIT)
@@ -19,7 +19,7 @@ sealed class StateData<Data>(
     class Error<Data>(
         message: String? = null,
         data: Data? = null,
-        throwable: Exception
+        throwable: Throwable
     ) : StateData<Data>(
         message = message,
         data = data,

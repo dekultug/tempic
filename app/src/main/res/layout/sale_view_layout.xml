@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvSaleViewPriceSale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_semi_bold"
+        android:text="@string/price_sale"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_text_size_14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSaleViewPriceOrigin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_6"
+        android:fontFamily="@font/notosans_regular"
+        android:text="@string/price_original"
+        android:textColor="@color/gray_light"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintBottom_toBottomOf="@id/tvSaleViewPriceSale"
+        app:layout_constraintStart_toEndOf="@id/tvSaleViewPriceSale"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_1"
+        android:background="@color/gray_light"
+        android:layout_marginTop="@dimen/dimen_2"
+        app:layout_constraintBottom_toBottomOf="@id/tvSaleViewPriceOrigin"
+        app:layout_constraintEnd_toEndOf="@id/tvSaleViewPriceOrigin"
+        app:layout_constraintStart_toStartOf="@id/tvSaleViewPriceOrigin"
+        app:layout_constraintTop_toTopOf="@id/tvSaleViewPriceOrigin" />
+
+    <ImageView
+        android:id="@+id/ivSaleViewStarRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_6"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="@id/tvSaleViewPriceOrigin"
+        app:layout_constraintStart_toEndOf="@id/tvSaleViewPriceOrigin"
+        app:layout_constraintTop_toTopOf="@id/tvSaleViewPriceOrigin" />
+
+    <TextView
+        android:id="@+id/tvSaleViewRateAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/notosans_medium"
+        android:text="@string/rate_average"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintBottom_toBottomOf="@id/tvSaleViewPriceOrigin"
+        app:layout_constraintStart_toEndOf="@id/ivSaleViewStarRate"
+        app:layout_constraintTop_toTopOf="@id/tvSaleViewPriceOrigin" />
+
+    <TextView
+        android:id="@+id/tvSaleViewCountRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_6"
+        android:fontFamily="@font/notosans_medium"
+        android:text="@string/count_rate"
+        android:textColor="@color/gray_light"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintBottom_toBottomOf="@id/tvSaleViewRateAverage"
+        app:layout_constraintStart_toEndOf="@id/tvSaleViewRateAverage"
+        app:layout_constraintTop_toTopOf="@id/tvSaleViewRateAverage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

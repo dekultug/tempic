@@ -5,12 +5,18 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.os.Bundle
+import android.os.Parcelable
+import android.util.SparseArray
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.*
+import androidx.constraintlayout.helper.widget.MotionPlaceholder
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.children
 import com.bumptech.glide.Glide
 import com.example.devfeandroid.R
 import com.google.android.material.color.MaterialColors
@@ -104,6 +110,52 @@ fun TextView.textColorMain() {
 fun ImageView.loadImageUrl(url: String) {
     Glide.with(this)
         .load(url)
-        .placeholder(R.drawable.image_default)
         .into(this)
 }
+
+fun View.getCoordinatesX(): Int {
+    val location = IntArray(2)
+    this.getLocationOnScreen(location)
+    return location[0]
+}
+
+fun View.disable() {
+    this.isEnabled = false
+}
+
+fun View.enable() {
+    this.isEnabled = true
+}
+
+fun Float.DpConvertToInt(): Int {
+    val scale: Float = getApplication().resources.displayMetrics.density
+    return (this * scale + 0.5f) as Int
+}
+
+fun ViewGroup.saveChildViewStates(): SparseArray<Parcelable> {
+    val childViewStates = SparseArray<Parcelable>()
+    children.forEach { child -> child.saveHierarchyState(childViewStates) }
+    return childViewStates
+}
+
+fun ViewGroup.restoreChildViewStates(childViewStates: SparseArray<Parcelable>) {
+    children.forEach { child -> child.restoreHierarchyState(childViewStates) }
+}
+
+fun ViewGroup.saveInstanceState(state: Parcelable?): Parcelable? {
+    return Bundle().apply {
+        putParcelable("SUPER_STATE_KEY", state)
+        putSparseParcelableArray("SPARSE_STATE_KEY", saveChildViewStates())
+    }
+}
+
+fun ViewGroup.restoreInstanceState(state: Parcelable?): Parcelable? {
+    var newState = state
+    if (newState is Bundle) {
+        val childrenState = newState.getSparseParcelableArray<Parcelable>("SPARSE_STATE_KEY")
+        childrenState?.let { restoreChildViewStates(it) }
+        newState = newState.getParcelable("SUPER_STATE_KEY")
+    }
+    return newState
+}
+

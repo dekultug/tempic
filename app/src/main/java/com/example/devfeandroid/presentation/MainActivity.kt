@@ -1,12 +1,9 @@
 package com.example.devfeandroid.presentation
 
 import android.os.Bundle
-import android.provider.ContactsContract.RawContacts.Data
-import androidx.activity.OnBackPressedCallback
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.example.devfeandroid.R
 import com.example.devfeandroid.databinding.ActivityMainBinding
 import com.example.devfeandroid.extensions.STRING_DEFAULT
@@ -16,15 +13,13 @@ import com.example.devfeandroid.presentation.home.HomeFragment
 import com.example.devfeandroid.presentation.splash.SplashFragment
 import com.example.devfeandroid.presentation.state.StateData
 import com.example.devfeandroid.presentation.store.StoreFragment
-import com.example.devfeandroid.widget.bottomnav.BottomBarNavigationView
-import com.example.devfeandroid.widget.bottomnav.TAB_BOTTOM_NAV
+import com.example.devfeandroid.util.keyboard.KeyboardUtility
+import com.example.devfeandroid.presentation.widget.bottomnav.BottomBarNavigationView
+import com.example.devfeandroid.presentation.widget.bottomnav.TAB_BOTTOM_NAV
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
-
-    var saveFilterSelect: MutableMap<TAB_BOTTOM_NAV, Int> = EnumMap(TAB_BOTTOM_NAV::class.java)
-
     /**
      * lifecycle
      */
@@ -84,31 +79,46 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun replaceFragment(@IdRes containerID: Int, fragment: Fragment, keepToBackStack: Boolean = true) {
+    fun replaceFragment(
+        @IdRes containerID: Int,
+        fragment: Fragment,
+        keepToBackStack: Boolean = true,
+        bundle: Bundle? = null
+    ) {
         val tag = fragment::class.java.simpleName
         val findFragment = supportFragmentManager.findFragmentByTag(tag)
+        val fm = supportFragmentManager.beginTransaction()
         if (findFragment != null) {
-            supportFragmentManager.popBackStack(tag, 0)
+            fm.apply {
+                replace(containerID, findFragment, tag)
+                if (bundle != null) {
+                    findFragment.arguments = bundle
+                }
+                commit()
+            }
         } else {
-            val fm = supportFragmentManager.beginTransaction()
             fm.apply {
                 replace(containerID, fragment, tag)
                 if (keepToBackStack) {
                     addToBackStack(tag)
+                }
+                if (bundle != null) {
+                    fragment.arguments = bundle
                 }
                 commit()
             }
         }
     }
 
-    fun closeApp() {
-        val callback: OnBackPressedCallback = object : OnBackPressedCallback(true /* enabled by default */) {
-            override fun handleOnBackPressed() {
-                this@MainActivity.supportFragmentManager.popBackStack(null, POP_BACK_STACK_INCLUSIVE)
-                this@MainActivity.finish()
-            }
-        }
-        this.onBackPressedDispatcher.addCallback(this, callback)
+    /**
+     * keyboard
+     */
+    fun showKeyBoard(){
+        KeyboardUtility.showKeyBoard(this)
+    }
+
+    fun hideKeyBoard(){
+        KeyboardUtility.hideSoftKeyboard(this)
     }
 
     /**
@@ -145,7 +155,7 @@ class MainActivity : AppCompatActivity() {
 
     interface IUIState<Data> {
         fun onLoading() {}
-        fun onError(s: String, exception: Exception) {}
+        fun onError(s: String, exception: Throwable) {}
         fun onSuccess(data: Data)
     }
 }

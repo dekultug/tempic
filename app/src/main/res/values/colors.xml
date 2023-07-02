@@ -16,5 +16,8 @@
     <color name="transparent_dark_background">#80000000</color>
     <color name="color_header">#222222</color>
     <color name="gray_bg_shape">#F8F8F8</color>
+    <color name="red_dark">#EC2525</color>
+    <color name="white_light">#EBEBEB</color>
+    <color name="red_tpA">#FF2C2C</color>
 
 </resources>

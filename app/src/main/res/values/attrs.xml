@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <declare-styleable name="FilterView">
+
+        <attr name="fv_min_width" format="dimension" />
+        <attr name="fv_font_family_item_select" format="reference"/>
+        <attr name="fv_font_family_item_un_select" format="reference"/>
 
         <attr name="fv_type" format="enum">
             <enum name="HOME" value="0" />
+            <enum name="STORE" value="1" />
         </attr>
 
     </declare-styleable>
@@ -12,15 +17,21 @@
     <declare-styleable name="HeaderView">
 
         //left
-        <attr name="hv_ic_left" format="reference"/>
-        <attr name="hv_tv_left" format="string"/>
-        <attr name="hv_tv_left_size" format="dimension"/>
-        <attr name="hv_tv_left_font_family" format="reference"/>
-        <attr name="hv_left_show" format="boolean"/>
-        <attr name="hv_left_tv_show" format="boolean"/>
+        <attr name="hv_ic_left" format="reference" />
+        <attr name="hv_tv_left" format="string" />
+        <attr name="hv_tv_left_size" format="dimension" />
+        <attr name="hv_tv_left_font_family" format="reference" />
+        <attr name="hv_left_show" format="boolean" />
+        <attr name="hv_left_tv_show" format="boolean" />
 
         //center
-        
+
+    </declare-styleable>
+
+    <declare-styleable name="LeftHeaderView">
+
+        <attr name="lhv_show_action" format="boolean" />
+
     </declare-styleable>
 
 </resources>

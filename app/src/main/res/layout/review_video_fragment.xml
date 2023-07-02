@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flReviewRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_dark_background"
+    tools:context=".presentation.home.review.video.ReviewVideoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clReviewVideoMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_70"
+        android:background="@drawable/shape_bg_white_top_corner_8"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/ivReviewVideoClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_8"
+            android:src="@drawable/ic_close_cricle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvReviewVideoTitle" />
+
+        <TextView
+            android:id="@+id/tvReviewVideoTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_marginEnd="@dimen/dimen_20"
+            android:ellipsize="end"
+            android:fontFamily="@font/notosans_semi_bold"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_16"
+            app:layout_constraintBottom_toBottomOf="@id/ivReviewVideoClose"
+            app:layout_constraintEnd_toStartOf="@id/ivReviewVideoClose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Tôi đã tìm thấy bảng màu cuộc sống của mình!" />
+
+        <TextView
+            android:id="@+id/tvReviewVideoDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:ellipsize="end"
+            android:fontFamily="@font/notosans_regular"
+            android:maxLines="3"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewVideoTitle"
+            tools:text="@string/test_text_long" />
+
+        <TextView
+            android:id="@+id/tvReviewVideoTimePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:fontFamily="@font/notosans_regular"
+            android:textColor="@color/gray_light"
+            android:textSize="@dimen/dimen_text_size_12"
+            app:layout_constraintStart_toStartOf="@id/tvReviewVideoDescription"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewVideoDescription"
+            tools:text="2022-05-31 13:59" />
+
+        <View
+            android:id="@+id/vReviewVideoTitle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/dimen_12"
+            android:background="@color/gray_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewVideoTimePost" />
+
+        <TextView
+            android:id="@+id/tvReviewVideoCountComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_12"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:fontFamily="@font/notosans_regular"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/vReviewVideoTitle"
+            tools:text="345 bình luận" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvReviewVideo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            app:layout_constraintBottom_toTopOf="@id/llReviewVideoReplyUser"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewVideoCountComment" />
+
+        <LinearLayout
+            android:id="@+id/llReviewVideoReplyUser"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_30"
+            android:background="@color/gray_light"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/vReviewVideo"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dimen_24"
+                android:fontFamily="@font/notosans_medium"
+                android:gravity="center"
+                android:paddingVertical="@dimen/dimen_4"
+                android:text="@string/reply"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_text_size_12" />
+
+            <TextView
+                android:id="@+id/tvReviewVideoReplyUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dimen_6"
+                android:fontFamily="@font/notosans_semi_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_text_size_12"
+                tools:text="@string/reply" />
+
+            <ImageView
+                android:layout_width="@dimen/dimen_4"
+                android:layout_height="@dimen/dimen_4"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginBottom="@dimen/dimen_1"
+                android:background="@drawable/ic_dot"
+                app:backgroundTint="@color/gray" />
+
+            <TextView
+                android:id="@+id/tvReviewVideoCancelReply"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/notosans_medium"
+                android:foreground="?selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dimen_10"
+                android:text="@string/cancel"
+                android:textSize="@dimen/dimen_text_size_12" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vReviewVideo"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/gray_light"
+            app:layout_constraintBottom_toTopOf="@id/clReviewVideoCreate" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clReviewVideoCreate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40"
+            android:layout_margin="@dimen/dimen_12"
+            android:background="@drawable/shape_bg_gray_corner_8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtReviewVideo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_26"
+                android:background="@null"
+                android:fontFamily="@font/notosans_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_review"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_light"
+                android:textSize="@dimen/dimen_text_size_12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivReviewVideoIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivReviewVideoIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_4"
+                android:src="@drawable/ic_icon"
+                app:layout_constraintBottom_toBottomOf="@id/ivReviewVideoSend"
+                app:layout_constraintEnd_toStartOf="@id/ivReviewVideoSend"
+                app:layout_constraintTop_toTopOf="@id/ivReviewVideoSend" />
+
+            <ImageView
+                android:id="@+id/ivReviewVideoSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
+                android:padding="@dimen/dimen_4"
+                android:src="@drawable/ic_send_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

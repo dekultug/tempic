@@ -1,8 +1,8 @@
 package com.example.devfeandroid.presentation.home
 
-import com.example.devfeandroid.data.model.producthome.Products
+import com.example.devfeandroid.data.model.postreview.PostReview
 
 interface IProductsListener {
-    fun onReviewImage(products: Products)
-    fun onReviewVideo(products: Products)
+    fun onReviewImage(postReview: PostReview)
+    fun onReviewVideo(postReview: PostReview)
 }

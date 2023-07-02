@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_10">
+
+    <ImageView
+        android:id="@+id/ivInfoProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintDimensionRatio="0.4:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintDimensionRatio="1:1"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvInfoProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_4"
+        android:fontFamily="@font/notosans_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivInfoProduct"
+        tools:text="Dr.G(닥터지)" />
+
+    <TextView
+        android:id="@+id/tvInfoProductDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_medium"
+        android:textColor="@color/color_header"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvInfoProductName"
+        app:layout_constraintTop_toBottomOf="@id/tvInfoProductName"
+        tools:text="Red Blemish Clear Soothing Cream 70ml" />
+
+    <TextView
+        android:id="@+id/tvProductInfoSale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_semi_bold"
+        android:text="10%"
+        android:textColor="@color/red_tpA"
+        android:textSize="@dimen/dimen_text_size_14"
+        app:layout_constraintStart_toStartOf="@id/tvInfoProductDescription"
+        app:layout_constraintTop_toBottomOf="@id/tvInfoProductDescription" />
+
+    <TextView
+        android:id="@+id/tvInfoProductPriceSale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_4"
+        android:fontFamily="@font/notosans_bold"
+        android:text="@string/price_sale"
+        android:textColor="@color/color_header"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintBottom_toBottomOf="@id/tvProductInfoSale"
+        app:layout_constraintStart_toEndOf="@id/tvProductInfoSale"
+        app:layout_constraintTop_toTopOf="@id/tvProductInfoSale" />
+
+    <TextView
+        android:id="@+id/tvInfoProductPriceOriginal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_4"
+        android:fontFamily="@font/notosans_medium"
+        android:text="@string/price_original"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintBottom_toBottomOf="@id/tvInfoProductPriceSale"
+        app:layout_constraintStart_toEndOf="@id/tvInfoProductPriceSale"
+        app:layout_constraintTop_toTopOf="@id/tvInfoProductPriceSale" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_1"
+        android:layout_marginTop="@dimen/dimen_4"
+        android:background="@color/gray_light"
+        app:layout_constraintBottom_toBottomOf="@id/tvInfoProductPriceOriginal"
+        app:layout_constraintEnd_toEndOf="@id/tvInfoProductPriceOriginal"
+        app:layout_constraintStart_toStartOf="@id/tvInfoProductPriceOriginal"
+        app:layout_constraintTop_toTopOf="@id/tvInfoProductPriceOriginal" />
+
+    <ImageView
+        android:id="@+id/ivInfoProductStar"
+        android:layout_width="@dimen/dimen_16"
+        android:layout_height="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_6"
+        android:layout_marginBottom="@dimen/dimen_16"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvProductInfoSale"
+        app:layout_constraintTop_toBottomOf="@id/tvProductInfoSale" />
+
+    <TextView
+        android:id="@+id/tvSaleViewRateAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/notosans_medium"
+        android:text="@string/rate_average"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivInfoProductStar"
+        app:layout_constraintStart_toEndOf="@id/ivInfoProductStar"
+        app:layout_constraintTop_toTopOf="@id/ivInfoProductStar" />
+
+    <TextView
+        android:id="@+id/tvSaleViewCountRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/notosans_medium"
+        android:text="@string/count_rate"
+        android:textColor="@color/gray_light"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvSaleViewRateAverage"
+        app:layout_constraintStart_toEndOf="@id/tvSaleViewRateAverage"
+        app:layout_constraintTop_toTopOf="@id/tvSaleViewRateAverage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_4"
+        android:fontFamily="@font/notosans_regular"
+        android:text="@string/convert_money"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintBottom_toBottomOf="@id/ivInfoProductStar"
+        app:layout_constraintStart_toEndOf="@id/tvSaleViewCountRate"
+        app:layout_constraintTop_toTopOf="@id/ivInfoProductStar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

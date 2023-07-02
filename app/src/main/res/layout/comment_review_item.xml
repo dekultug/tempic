@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clCommentReviewRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivCommentReviewAvatarUser"
+        android:layout_width="@dimen/dimen_30"
+        android:layout_height="@dimen/dimen_30"
+        android:layout_margin="@dimen/dimen_12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/CornerImageView"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvCommentReviewNameUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_50"
+        android:fontFamily="@font/notosans_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_text_size_14"
+        app:layout_constraintBottom_toBottomOf="@id/ivCommentReviewAvatarUser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivCommentReviewAvatarUser"
+        tools:text="oko117" />
+
+    <TextView
+        android:id="@+id/tvCommentReviewContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/notosans_regular"
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintEnd_toStartOf="@id/llCommentReviewLike"
+        app:layout_constraintStart_toStartOf="@id/tvCommentReviewNameUser"
+        app:layout_constraintTop_toBottomOf="@id/tvCommentReviewNameUser"
+        tools:text="@string/test_text_long" />
+
+    <LinearLayout
+        android:id="@+id/llCommentReviewLike"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCommentReviewNameUser">
+
+        <ImageView
+            android:id="@+id/ivCommentReviewLike"
+            android:layout_width="@dimen/dimen_12"
+            android:layout_height="@dimen/dimen_12"
+            android:src="@drawable/ic_heart_un_select" />
+
+        <TextView
+            android:id="@+id/tvCommentReviewCountLike"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:text="5"
+            android:textSize="@dimen/dimen_text_size_12"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCommentReviewTimePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/notosans_regular"
+        android:textColor="@color/gray_light"
+        android:textSize="@dimen/dimen_text_size_12"
+        app:layout_constraintStart_toStartOf="@id/tvCommentReviewContent"
+        app:layout_constraintTop_toBottomOf="@id/tvCommentReviewContent"
+        tools:text="2022-05-31 13:59" />
+
+    <LinearLayout
+        android:id="@+id/llCommentReviewReply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_4"
+        android:layout_marginStart="@dimen/dimen_12"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:selectableItemBackground"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/tvCommentReviewTimePost"
+        app:layout_constraintStart_toEndOf="@id/tvCommentReviewTimePost"
+        app:layout_constraintTop_toTopOf="@id/tvCommentReviewTimePost">
+
+        <TextView
+            android:id="@+id/tvCommentReviewReply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="@string/reply"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/dimen_text_size_12" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llCommentReviewReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_4"
+        android:layout_marginStart="@dimen/dimen_12"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/tvCommentReviewTimePost"
+        app:layout_constraintStart_toEndOf="@id/llCommentReviewReply"
+        app:layout_constraintTop_toTopOf="@id/tvCommentReviewTimePost">
+
+        <TextView
+            android:id="@+id/tvCommentReviewReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="@string/report"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/dimen_text_size_12" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1"
+            android:background="@color/gray" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
